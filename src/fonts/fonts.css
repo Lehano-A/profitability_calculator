@@ -6,3 +6,12 @@
     url('./Roboto/Roboto-Bold.woff') format('woff');
   font-weight: 700;
 }
+
+@font-face {
+  font-family: 'Roboto';
+  src:
+    local('Roboto-Medium'),
+    url('./Roboto/Roboto-Medium.woff2') format('woff2'),
+    url('./Roboto/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+}
