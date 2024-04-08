@@ -12,7 +12,7 @@ const Img = styled.img`
   width: 27px;
   height: 30px;
   border-radius: 9px;
-  background-color: #fbed10;
+  background-color: ${(props) => props.theme.palette.primary};
   padding: 9.75px 11.25px 9.75px 12px;
   margin: 0 12px 0 0;
 `
