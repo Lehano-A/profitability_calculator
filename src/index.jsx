@@ -11,5 +11,5 @@ root.render(
     <ThemeProvider theme={lightTheme}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 )

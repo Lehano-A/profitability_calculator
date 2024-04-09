@@ -1,3 +1,5 @@
+import Form from '../Form/Form/Form'
+import InputTypeDeposit from '../Form/InputTypeDeposit/InputTypeDeposit'
 import Header from '../Header/Header'
 import styled from 'styled-components'
 
@@ -6,9 +8,14 @@ const CommonBox = styled.div`
 `
 
 function App() {
+
   return (
     <CommonBox>
       <Header />
+
+      <Form>
+        <InputTypeDeposit />
+      </Form>
     </CommonBox>
   )
 }
