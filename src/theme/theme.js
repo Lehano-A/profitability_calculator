@@ -3,7 +3,7 @@ const common = {
     border: {
       width: '2px',
       radius: '9px',
-      color: "#EEEEEE",
+      color: '#EEEEEE',
     },
   },
 }

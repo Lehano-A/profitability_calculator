@@ -8,7 +8,6 @@ const CommonBox = styled.div`
 `
 
 function App() {
-
   return (
     <CommonBox>
       <Header />

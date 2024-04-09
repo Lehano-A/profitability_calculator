@@ -2,15 +2,17 @@ import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import Label from '../../App/Common/Form/Label/Label'
 import arrowSelect from '../../../images/icons/arrowSelect.svg'
+import MonetaryUnit from '../MonetaryUnit/MonetaryUnit'
 
 const Select = styled.select`
   height: 48px;
   max-width: 280px;
   background: url(${arrowSelect}) no-repeat left 49%;
   background-position-x: calc(100% - 19px);
-  border: ${props => props.theme.common.form.border.color} 2px solid;
-  border-radius: ${props => props.theme.common.form.border.radius};
+  border: ${(props) => props.theme.common.form.border.color} 2px solid;
+  border-radius: ${(props) => props.theme.common.form.border.radius};
   padding: 0 0 0 17px;
+  margin: 0 0 36px 0;
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.25px;
@@ -26,6 +28,8 @@ function InputTypeDeposit() {
       <Select id='typeDeposit'>
         <option>Standart</option>
       </Select>
+
+      <MonetaryUnit />
     </BoxSectionForm>
   )
 }

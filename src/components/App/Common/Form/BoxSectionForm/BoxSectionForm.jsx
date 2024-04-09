@@ -6,12 +6,7 @@ const Box = styled.div`
 `
 
 function BoxSectionForm({ children }) {
-
-  return (
-    <Box>
-      {children}
-    </Box>
-  )
+  return <Box>{children}</Box>
 }
 
 export default BoxSectionForm
