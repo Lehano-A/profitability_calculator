@@ -46,8 +46,8 @@ function MonetaryUnit() {
 
   return (
     <Fieldset id='monetaryUnit'>
-      {namesUnits.map((name) => (
-        <Label>
+      {namesUnits.map((name, id) => (
+        <Label key={id}>
           <Radio type='radio' name='monetaryUnit' />
 
           {name}
