@@ -1,12 +1,14 @@
 @import url(./fonts/fonts.css);
+* {
+  box-sizing: border-box;
+}
 
-html {
+:root {
   font-size: 62.5%;
 }
 
 body {
   font-size: 1.4rem;
-  box-sizing: border-box;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
