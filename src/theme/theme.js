@@ -6,12 +6,29 @@ const common = {
       color: '#EEEEEE',
     },
   },
+  inputRange: {
+    thumb: {
+      width: 15,
+      height: 38,
+    },
+    track: {
+      height: 10,
+    },
+  },
 }
 
 const lightTheme = {
   palette: {
     primary: '#fbed10',
     secondary: '#999999',
+    tertiary: '#222',
+
+    shades: {
+      secondary: {
+        100: '#FAFAFA',
+        200: '#EEE',
+      },
+    },
   },
 
   common,
