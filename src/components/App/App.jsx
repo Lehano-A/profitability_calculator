@@ -1,4 +1,4 @@
-import InputAmountInvestment from '../Form/Form/InputAmountInvestment/InputAmountInvestment'
+import InputAmountInvestment from '../Form/InputAmountInvestment/InputAmountInvestment'
 import Form from '../Form/Form/Form'
 import MonetaryUnit from '../Form/MonetaryUnit/MonetaryUnit'
 import InputTypeDeposit from '../Form/InputTypeDeposit/InputTypeDeposit'
