@@ -14,20 +14,20 @@ const InputRange = styled(Input)`
   margin: 0;
 
   &::-webkit-slider-thumb {
-    width: ${(props) => props.theme.common.inputRange.thumb.width}px;
-    height: ${(props) => props.theme.common.inputRange.thumb.height}px;
+    width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
+    height: ${(props) => props.theme.elements.inputRange.thumb.height}px;
     padding: 19px 7.5px;
     border-radius: 3px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     background-color: #fff;
     appearance: none;
-    margin-top: -${(props) => props.theme.common.inputRange.thumb.height / 2 - props.theme.common.inputRange.track.height / 2}px;
+    margin-top: -${(props) => props.theme.elements.inputRange.thumb.height / 2 - props.theme.elements.inputRange.track.height / 2}px;
   }
 
   &::-webkit-slider-runnable-track {
     background-color: ${(props) => props.theme.palette.primary};
     border-radius: 30px;
-    height: ${(props) => props.theme.common.inputRange.track.height}px;
+    height: ${(props) => props.theme.elements.inputRange.track.height}px;
     appearance: none;
   }
 `
@@ -39,7 +39,7 @@ const Datalist = styled.datalist`
   margin: 1px 0 0;
 
   & option {
-    width: ${(props) => props.theme.common.inputRange.thumb.width}px;
+    width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
     color: ${(props) => props.theme.palette.shades.secondary[200]};
     font-size: 14px;
     font-weight: 500;

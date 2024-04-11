@@ -1,18 +1,17 @@
-const common = {
-  form: {
+const elements = {
+  input: {
     border: {
-      width: '2px',
-      radius: '9px',
-      color: '#EEEEEE',
+      width: 2, // px
+      radius: 9, // px
     },
   },
   inputRange: {
     thumb: {
-      width: 15,
-      height: 38,
+      width: 15, // px
+      height: 38, // px
     },
     track: {
-      height: 10,
+      height: 10, // px
     },
   },
 }
@@ -31,7 +30,7 @@ const lightTheme = {
     },
   },
 
-  common,
+  elements,
 }
 
 export { lightTheme }
