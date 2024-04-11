@@ -4,8 +4,9 @@ const Input = styled.input`
   height: 48px;
   max-width: 280px;
   width: 100%;
-  border: ${props => props.theme.palette.shades.secondary[200]} ${props => props.theme.elements.input.border.width}px solid;
-  border-radius: ${props => props.theme.elements.input.border.radius}px;
+  border: ${(props) => props.theme.palette.shades.secondary[200]}
+    ${(props) => props.theme.elements.input.border.width}px solid;
+  border-radius: ${(props) => props.theme.elements.input.border.radius}px;
   padding: 0 0 0 17px;
   font-size: 1.6rem;
   font-weight: 700;
