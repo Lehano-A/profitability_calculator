@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import styled from 'styled-components'
 import InputInvestmentPeriod from '../Form/InvestmentPeriod/InvestmentPeriod'
 import CalculationInterestRate from '../Form/CalculationInterestRate/CalculationInterestRate'
+import StartEndInvesting from '../Form/StartEndInvesting/StartEndInvesting'
 
 const CommonBox = styled.div`
   margin: 60px 20px 0;
@@ -22,6 +23,7 @@ function App() {
         <InputAmountInvestment />
         <InputInvestmentPeriod />
         <CalculationInterestRate />
+        <StartEndInvesting />
       </Form>
     </CommonBox>
   )
