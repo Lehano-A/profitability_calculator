@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const Input = styled.input`
   height: 48px;
-  max-width: 280px;
   width: 100%;
   border: ${(props) => props.theme.palette.shades.secondary[200]}
     ${(props) => props.theme.elements.input.border.width}px solid;
