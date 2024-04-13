@@ -8,6 +8,10 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+
+  @media (min-width: 320px) {
+    max-width: 280px;
+  }
 `
 const StartInvesting = styled(InputCalendar)``
 const EndInvesting = styled(InputCalendar)`
