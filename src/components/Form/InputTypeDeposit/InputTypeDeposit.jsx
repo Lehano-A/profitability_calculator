@@ -7,6 +7,10 @@ import Input from '../../styled/Input'
 const Select = styled(Input)`
   background: url(${arrowSelect}) no-repeat left 49%;
   background-position-x: calc(100% - 19px);
+
+  @media (min-width: 320px) {
+    max-width: 280px;
+  }
 `
 
 function InputTypeDeposit() {
