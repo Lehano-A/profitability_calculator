@@ -9,8 +9,8 @@ const HeaderElement = styled.header`
 `
 
 const Img = styled.img`
-  width: 27px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   border-radius: 9px;
   background-color: ${(props) => props.theme.palette.primary};
   padding: 9.75px 11.25px 9.75px 12px;
