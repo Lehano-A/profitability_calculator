@@ -3,15 +3,10 @@ import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import Label from '../../App/Common/Form/Label/Label'
 import Input from '../../styled/Input'
 
-const BoxInputAndDataList = styled.div`
-  position: relative;
-  width: 280px;
-`
-
 const InputRange = styled(Input)`
   border: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 4px 0;
 
   &::-webkit-slider-thumb {
     width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
@@ -29,6 +24,7 @@ const InputRange = styled(Input)`
     border-radius: 30px;
     height: ${(props) => props.theme.elements.inputRange.track.height}px;
     appearance: none;
+    width: 100%;
   }
 `
 
@@ -53,24 +49,22 @@ function InputInvestmentPeriod() {
     <BoxSectionForm>
       <Label>Срок инвестиций ( Месяцев )</Label>
 
-      <BoxInputAndDataList>
-        <InputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />
+      <InputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />
 
-        <Datalist id='range-list'>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-          <option value='6'>6</option>
-          <option value='7'>7</option>
-          <option value='8'>8</option>
-          <option value='9'>9</option>
-          <option value='10'>10</option>
-          <option value='11'>11</option>
-          <option value='12'>12</option>
-        </Datalist>
-      </BoxInputAndDataList>
+      <Datalist id='range-list'>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        <option value='6'>6</option>
+        <option value='7'>7</option>
+        <option value='8'>8</option>
+        <option value='9'>9</option>
+        <option value='10'>10</option>
+        <option value='11'>11</option>
+        <option value='12'>12</option>
+      </Datalist>
     </BoxSectionForm>
   )
 }
