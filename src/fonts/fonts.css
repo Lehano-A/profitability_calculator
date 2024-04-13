@@ -1,6 +1,15 @@
 @font-face {
   font-family: 'Roboto';
   src:
+    local('Roboto-Black'),
+    url('./Roboto/Roboto-Black.woff2') format('woff2'),
+    url('./Roboto/Roboto-Black.woff') format('woff');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src:
     local('Roboto-Bold'),
     url('./Roboto/Roboto-Bold.woff2') format('woff2'),
     url('./Roboto/Roboto-Bold.woff') format('woff');
@@ -15,3 +24,5 @@
     url('./Roboto/Roboto-Medium.woff') format('woff');
   font-weight: 500;
 }
+
+
