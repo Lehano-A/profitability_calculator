@@ -6,7 +6,7 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 280px;
+
   min-height: 106px;
   height: 100%;
   width: 100%;
