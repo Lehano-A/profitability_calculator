@@ -54,7 +54,7 @@ function InputInvestmentPeriod() {
       <Label>Срок инвестиций ( Месяцев )</Label>
 
       <BoxInputAndDataList>
-        <InputRange type='range' min='1' max='12' list='range-list' />
+        <InputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />
 
         <Datalist id='range-list'>
           <option value='1'>1</option>

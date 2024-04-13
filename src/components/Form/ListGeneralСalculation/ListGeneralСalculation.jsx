@@ -55,17 +55,17 @@ function ListGeneralСalculation() {
       <List>
         <Item>
           <span>Инвестиция</span>
-          <output>10,000 BTC</output>
+          <output for='amountInvestment'>10,000 BTC</output>
         </Item>
         <Item>
           <span>Процент прибыли</span>
-          <output>91.5 %</output>
+          <output for='amountInvestment investmentPeriod interestRate'>91.5 %</output>
         </Item>
         <Item>
           <span>
             Прибыль с <br /> инвестиции{' '}
           </span>
-          <output>9,150 BTC</output>
+          <output for='investmentPeriod interestRate'>9,150 BTC</output>
         </Item>
       </List>
 

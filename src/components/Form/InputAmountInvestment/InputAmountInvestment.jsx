@@ -37,14 +37,13 @@ const Unit = styled.span`
   margin: 0 20px 0 0;
 `
 
-
 function InputAmountInvestment() {
   return (
     <BoxSectionForm>
       <Label>Сумма инвестиций</Label>
 
       <BoxInput>
-        <InputNumber type='number' value='10.000' />
+        <InputNumber id='amountInvestment' type='number' value='10.000' />
 
         <BoxUnit as='div'>
           <Unit>BTC</Unit>
