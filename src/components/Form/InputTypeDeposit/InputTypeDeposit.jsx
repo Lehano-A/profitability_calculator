@@ -15,7 +15,7 @@ const Select = styled(Input)`
 
 function InputTypeDeposit() {
   return (
-    <BoxSectionForm>
+    <BoxSectionForm id='componentInputTypeDeposit'>
       <Label htmlFor='typeDeposit'>Тип депозита</Label>
 
       <Select as='select' id='typeDeposit'>

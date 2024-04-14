@@ -5,8 +5,8 @@ const Box = styled.div`
   flex-direction: column;
 `
 
-function BoxSectionForm({ children }) {
-  return <Box>{children}</Box>
+function BoxSectionForm({ children, id = 'boxSectionForm' }) {
+  return <Box id={id}>{children}</Box>
 }
 
 export default BoxSectionForm

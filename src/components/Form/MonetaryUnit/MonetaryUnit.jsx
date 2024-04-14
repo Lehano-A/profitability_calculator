@@ -45,7 +45,7 @@ function MonetaryUnit() {
   const namesUnits = ['BTC', 'UAH', 'RUB', 'EUR', 'USD']
 
   return (
-    <Fieldset id='monetaryUnit'>
+    <Fieldset id='componentMonetaryUnit'>
       {namesUnits.map((name, id) => (
         <Label key={id}>
           <Radio type='radio' name='monetaryUnit' />

@@ -35,7 +35,7 @@ const UnitMeasurement = styled.span`
 
 function CalculationInterestRate() {
   return (
-    <Box>
+    <Box id='componentCalculationInterestRate'>
       <Label>Процентная ставка</Label>
 
       <BoxOutput>

@@ -46,7 +46,7 @@ const Datalist = styled.datalist`
 
 function InputInvestmentPeriod() {
   return (
-    <BoxSectionForm>
+    <BoxSectionForm id='componentInputInvestmentPeriod'>
       <Label>Срок инвестиций ( Месяцев )</Label>
 
       <InputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />

@@ -20,7 +20,7 @@ const EndInvesting = styled(InputCalendar)`
 
 function StartEndInvesting() {
   return (
-    <Box>
+    <Box id='componentStartEndInvesting'>
       <BoxSectionForm>
         <Label>Старт инвестиции</Label>
         <StartInvesting type='date' />

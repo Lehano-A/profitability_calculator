@@ -51,7 +51,7 @@ const Item = styled.li`
 
 function ListGeneralСalculation() {
   return (
-    <Box>
+    <Box id='componentListGeneralСalculation'>
       <List>
         <Item>
           <span>Инвестиция</span>

@@ -39,7 +39,7 @@ const Unit = styled.span`
 
 function InputAmountInvestment() {
   return (
-    <BoxSectionForm>
+    <BoxSectionForm id='componentInputAmountInvestment'>
       <Label>Сумма инвестиций</Label>
 
       <BoxInput>
