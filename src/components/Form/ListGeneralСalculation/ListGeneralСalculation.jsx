@@ -44,8 +44,13 @@ const Item = styled.li`
   }
 
   &:last-child > output:last-child {
+    /* 9,150 BTC */
     font-weight: 900;
     color: ${(props) => props.theme.palette.tertiary};
+
+    @media (min-width: 480px) {
+      font-size: 2.4rem;
+    }
   }
 `
 
