@@ -4,7 +4,7 @@ import StyledInput from './StyledInput'
 const StyledInputRange = styled(StyledInput)`
   border: none;
   padding: 0;
-  margin: 0 0 4px 0;
+  margin: ${(props) => (props.$margin ? props.$margin : 0)};
 
   &::-webkit-slider-thumb {
     width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
