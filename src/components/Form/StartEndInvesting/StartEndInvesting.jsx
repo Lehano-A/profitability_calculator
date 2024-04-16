@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Label from '../../App/Common/Form/Label/Label'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import InputCalendar from '../../styled/InputCalendar'
+import StyledInputRange from '../../styled/StyledInputCalendar'
 
 const Box = styled.div`
   display: flex;
@@ -13,8 +13,8 @@ const Box = styled.div`
     max-width: 280px;
   }
 `
-const StartInvesting = styled(InputCalendar)``
-const EndInvesting = styled(InputCalendar)`
+const StartInvesting = styled(StyledInputRange)``
+const EndInvesting = styled(StyledInputRange)`
   color: ${(props) => props.theme.palette.secondary};
 `
 

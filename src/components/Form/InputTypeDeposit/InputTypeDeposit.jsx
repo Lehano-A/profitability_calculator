@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import Label from '../../App/Common/Form/Label/Label'
 import arrowSelect from '../../../images/icons/arrowSelect.svg'
-import Input from '../../styled/Input'
+import StyledInput from '../../styled/StyledInput'
 
-const Select = styled(Input)`
+const Select = styled(StyledInput)`
   background: url(${arrowSelect}) no-repeat left 49%;
   background-position-x: calc(100% - 19px);
 

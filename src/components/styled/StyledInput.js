@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Input = styled.input`
+const StyledInput = styled.input`
   height: 48px;
   width: 100%;
   border: ${(props) => props.theme.palette.shades.secondary[200]}
@@ -15,4 +15,4 @@ const Input = styled.input`
   -moz-appearance: textfield;
 `
 
-export default Input
+export default StyledInput

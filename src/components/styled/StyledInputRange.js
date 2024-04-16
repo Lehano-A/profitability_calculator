@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import Input from './Input'
+import StyledInput from './StyledInput'
 
-const InputRange = styled(Input)`
+const StyledInputRange = styled(StyledInput)`
   border: none;
   padding: 0;
   margin: 0 0 4px 0;
@@ -26,4 +26,4 @@ const InputRange = styled(Input)`
   }
 `
 
-export default InputRange
+export default StyledInputRange

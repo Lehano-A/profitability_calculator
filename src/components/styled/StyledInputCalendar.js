@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Input from './Input'
+import StyledInput from './StyledInput'
 import iconCalendar from '../../images/icons/calendar.svg'
 
-const InputCalendar = styled(Input)`
+const StyledInputRange = styled(StyledInput)`
   font-size: 1.8rem;
   font-weight: 700;
   color: ${(props) => props.theme.palette.tertiary};
@@ -15,4 +15,4 @@ const InputCalendar = styled(Input)`
   }
 `
 
-export default InputCalendar
+export default StyledInputRange

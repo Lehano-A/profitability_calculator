@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import Label from '../../App/Common/Form/Label/Label'
-import InputRange from '../../styled/InputRange'
+import StyledInputRange from '../../styled/StyledInputRange'
 
 const Datalist = styled.datalist`
   display: flex;
@@ -24,7 +24,7 @@ function InputInvestmentPeriod() {
     <BoxSectionForm id='componentInputInvestmentPeriod'>
       <Label>Срок инвестиций ( Месяцев )</Label>
 
-      <InputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />
+      <StyledInputRange id='investmentPeriod' type='range' min='1' max='12' list='range-list' />
 
       <Datalist id='range-list'>
         <option value='1'>1</option>

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import Label from '../../App/Common/Form/Label/Label'
-import Input from '../../styled/Input'
+import StyledInput from '../../styled/StyledInput'
 
 const BoxInput = styled.div`
   display: flex;
   position: relative;
 `
 
-const InputNumber = styled(Input)`
+const InputNumber = styled(StyledInput)`
   font-size: 14px;
 
   &::-webkit-inner-spin-button,
