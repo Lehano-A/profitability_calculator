@@ -1,4 +1,5 @@
 @import url(./fonts/fonts.css);
+
 * {
   box-sizing: border-box;
 }
@@ -8,6 +9,9 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 1.4rem;
   margin: 0;
   font-family: 'Roboto', sans-serif;

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import StyledInput from './StyledInput'
 
 const StyledInputRange = styled(StyledInput)`
+  height: 38px;
   border: none;
   padding: 0;
   margin: ${(props) => (props.$margin ? props.$margin : 0)};

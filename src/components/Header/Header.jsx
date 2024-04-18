@@ -3,9 +3,20 @@ import styled from 'styled-components'
 
 const HeaderElement = styled.header`
   display: flex;
-  max-width: 270px;
   width: 100%;
   align-items: center;
+
+  @media (min-width: 320px) {
+    max-width: 270px;
+  }
+
+  @media (min-width: 480px) {
+    max-width: 440px;
+  }
+
+  @media (min-width: 640px) {
+    max-width: 520px;
+  }
 `
 
 const Img = styled.img`
@@ -14,16 +25,33 @@ const Img = styled.img`
   border-radius: 9px;
   background-color: ${(props) => props.theme.palette.primary};
   padding: 9.75px 11.25px 9.75px 12px;
-  margin: 0 12px 0 0;
+
+  @media (min-width: 320px) {
+    margin-right: 12px;
+  }
+
+  @media (min-width: 480px) {
+    margin-right: 20px;
+  }
 `
 
 const Title = styled.h1`
-  display: inline;
-  font-size: 20px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.17;
   word-break: break-word;
   margin: 0;
+
+  @media (min-width: 320px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 480px) {
+    font-size: 2.8rem;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 3.6rem;
+  }
 `
 
 function Header() {

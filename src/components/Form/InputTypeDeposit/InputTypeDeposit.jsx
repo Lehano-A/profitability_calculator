@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import Label from '../../App/Common/Form/Label/Label'
 import arrowSelect from '../../../images/icons/arrowSelect.svg'
 import StyledInput from '../../styled/StyledInput'
+import StyledLabel from '../../styled/StyledLabel'
+
+const Label = styled(StyledLabel)``
 
 const Select = styled(StyledInput)`
   background: url(${arrowSelect}) no-repeat left 49%;
@@ -10,6 +12,14 @@ const Select = styled(StyledInput)`
 
   @media (min-width: 320px) {
     max-width: 280px;
+    font-size: 1.6rem;
+    line-height: 1.31;
+  }
+
+  @media (min-width: 640px) {
+    min-width: 260px;
+    font-size: 1.8rem;
+    line-height: 1.17;
   }
 `
 

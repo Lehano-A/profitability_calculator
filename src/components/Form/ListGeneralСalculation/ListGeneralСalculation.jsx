@@ -8,7 +8,7 @@ const Box = styled.div`
   min-height: 348px;
   background-color: ${(props) => props.theme.palette.shades.secondary[100]};
   margin: 0 -20px;
-  line-height: 23.74px;
+  line-height: 1.31;
 `
 
 const List = styled.ul`
@@ -22,7 +22,6 @@ const List = styled.ul`
 const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 1.8rem;
   color: ${(props) => props.theme.palette.secondary};
 
@@ -35,17 +34,20 @@ const Item = styled.li`
   }
 
   &:nth-child(2) {
-    padding-bottom: 20px;
+    padding-bottom: 18px;
     border-bottom: 2px solid ${(props) => props.theme.palette.shades.secondary[200]};
   }
 
   &:last-child {
+    display: flex;
+    align-items: center;
     padding-top: 20px;
   }
 
+  /* 9,150 BTC */
   &:last-child > output:last-child {
-    /* 9,150 BTC */
     font-weight: 900;
+    line-height: 1.17;
     color: ${(props) => props.theme.palette.tertiary};
 
     @media (min-width: 480px) {
@@ -64,13 +66,13 @@ function ListGeneralСalculation() {
         </Item>
         <Item>
           <span>Процент прибыли</span>
-          <output htmlFor='amountInvestment investmentPeriod interestRate'>91.5 %</output>
+          <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
         </Item>
         <Item>
           <span>
-            Прибыль с <br /> инвестиции{' '}
+            Прибыль с <br /> инвестиции
           </span>
-          <output htmlFor='investmentPeriod interestRate'>9,150 BTC</output>
+          <output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</output>
         </Item>
       </List>
 

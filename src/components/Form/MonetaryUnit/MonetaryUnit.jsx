@@ -15,9 +15,14 @@ const Radio = styled.input`
 const Label = styled.label`
   font-size: 18px;
   font-weight: 700;
-  padding: 0 3px 6px 3px;
+  padding: 0 3px 6px 0;
   letter-spacing: 0.06px;
   text-transform: uppercase;
+  line-height: 1.17;
+
+  &:not(:first-child) {
+    padding-left: 3px;
+  }
 
   &:not(:last-child) {
     margin: 0 14px 0 0;

@@ -1,73 +1,126 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import Label from '../../App/Common/Form/Label/Label'
 import StyledInput from '../../styled/StyledInput'
 import StyledInputRange from '../../styled/StyledInputRange'
+import StyledLabel from '../../styled/StyledLabel'
 
-const BoxInput = styled.div`
+const Label = styled(StyledLabel)`
+  line-height: 1.31;
+`
+
+const BoxInputs = styled.div`
   display: flex;
-  position: relative;
+  align-items: center;
+
+  & > :first-child {
+    margin-right: 40px;
+  }
 `
 
 const BoxInputNumberAndUnit = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-
-  @media (min-width: 320px) {
-    width: 100%;
-  }
+  width: 100%;
 
   @media (min-width: 480px) {
-    min-width: 160px;
     max-width: 200px;
+  }
+
+  @media (min-width: 640px) {
+    min-width: 220px;
+    max-width: 350px;
   }
 `
 
 const InputRange = styled(StyledInputRange)`
   display: none;
-  margin-right: 40px;
+  width: 100%;
 
   @media (min-width: 480px) {
-    display: flex;
+    display: block;
     min-width: 220px;
-    max-width: 360px;
+  }
+
+  @media (min-width: 640px) {
+    min-width: 320px;
   }
 `
 
 const InputNumber = styled(StyledInput)`
-  display: flex;
-  font-size: 14px;
+  width: 100%;
+  font-weight: 700;
+
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
   }
+
+  &:focus {
+    border: 2px solid black;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    outline: none;
+  }
+
+  &:focus + span {
+    border: 2px solid black;
+    border-left: none;
+  }
+
+  @media (min-width: 320px) {
+    font-size: 1.4rem;
+    line-height: 1.31;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1.8rem;
+    line-height: 1.17;
+  }
 `
 
-const Unit = styled.span`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
+const Unit = styled(StyledInput)`
+  display: flex;
+  align-items: center;
+  line-height: 48px;
+
   color: ${(props) => props.theme.palette.secondary};
-  font-size: 14px;
+
   font-weight: 500;
-  margin: 0 20px 0 0;
+  padding: 23px 20px 21px 0;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  @media (min-width: 320px) {
+    font-size: 1.4rem;
+    line-height: 1.31;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1.8rem;
+    line-height: 3;
+  }
 `
 
 function InputAmountInvestment() {
   return (
     <BoxSectionForm id='componentInputAmountInvestment'>
-      <Label>Сумма инвестиций</Label>
+      <Label htmlFor='inputRangeAmountInvestment'>Сумма инвестиций</Label>
 
-      <BoxInput>
-        <InputRange type='range' />
-        <BoxInputNumberAndUnit>
+      <BoxInputs>
+        <InputRange type='range' id='inputRangeAmountInvestment' />
+
+        <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
           <InputNumber id='amountInvestment' type='number' value='10.000' />
-          <Unit>BTC</Unit>
+          <Unit as='span'>BTC</Unit>
         </BoxInputNumberAndUnit>
-      </BoxInput>
+      </BoxInputs>
     </BoxSectionForm>
   )
 }

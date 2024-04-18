@@ -13,17 +13,55 @@ const CommonBox = styled.div`
   margin: 60px 20px 0;
 `
 
+const BoxTypeDepositAndMonetaryUnit = styled.div`
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: start;
+    align-items: last baseline;
+
+    & > :first-child {
+      margin-right: 40px;
+    }
+  }
+`
+
+const BoxInvestmentPeriodAndInterestRate = styled.div`
+  @media (min-width: 640px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & > :first-child {
+      margin-right: 40px;
+      min-width: 320px;
+      width: 100%;
+    }
+
+    & > :last-child {
+      max-width: 350px;
+    }
+  }
+`
+
 function App() {
   return (
     <CommonBox>
       <Header />
 
       <Form>
-        <InputTypeDeposit />
-        <MonetaryUnit />
+        <BoxTypeDepositAndMonetaryUnit id='boxTypeDepositAndMonetaryUnit'>
+          <InputTypeDeposit />
+          <MonetaryUnit />
+        </BoxTypeDepositAndMonetaryUnit>
+
         <InputAmountInvestment />
-        <InputInvestmentPeriod />
-        <CalculationInterestRate />
+
+        <BoxInvestmentPeriodAndInterestRate id='boxInvestmentPeriodAndInterestRate'>
+          <InputInvestmentPeriod />
+          <CalculationInterestRate />
+        </BoxInvestmentPeriodAndInterestRate>
+
         <StartEndInvesting />
         <ListGeneralСalculation />
       </Form>

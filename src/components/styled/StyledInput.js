@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 const StyledInput = styled.input`
-  height: 48px;
-  width: 100%;
   border: ${(props) => props.theme.palette.shades.secondary[200]}
     ${(props) => props.theme.elements.input.border.width}px solid;
   border-radius: ${(props) => props.theme.elements.input.border.radius}px;
@@ -13,6 +11,14 @@ const StyledInput = styled.input`
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: textfield;
+
+  @media (min-width: 320px) {
+    height: 48px;
+  }
+
+  @media (min-width: 640px) {
+    height: 54px;
+  }
 `
 
 export default StyledInput

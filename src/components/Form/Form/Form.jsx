@@ -2,22 +2,40 @@ import styled from 'styled-components'
 
 const FormElement = styled.form`
   @media (min-width: 320px) {
-    & > #componentInputTypeDeposit /* 1 */ {
-      margin: 40px 0 36px;
+    & #componentInputTypeDeposit {
+      margin-bottom: 36px;
     }
 
-    & > #componentMonetaryUnit /* 2 */ {
+    & #boxTypeDepositAndMonetaryUnit {
+      margin-top: 40px;
       margin-bottom: 50px;
     }
 
-    & > #componentInputAmountInvestment, /* 3 */
-    & > #componentCalculationInterestRate, /* 5 */
-    & > #componentStartEndInvesting, /* 6 */ {
+    & #componentInputAmountInvestment,
+    & #componentInputInvestmentPeriod,
+    & #boxInvestmentPeriodAndInterestRate,
+    & #componentStartEndInvesting {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    & #boxTypeDepositAndMonetaryUnit {
+      margin-top: 60px;
+    }
+
+    & #boxTypeDepositAndMonetaryUnit,
+    & #boxInvestmentPeriodAndInterestRate {
       margin-bottom: 40px;
     }
 
-    & > #componentInputInvestmentPeriod /* 4 */ {
-      margin-bottom: 43px;
+    & #componentInputTypeDeposit,
+    & #componentInputInvestmentPeriod {
+      margin-bottom: 0;
+    }
+
+    & #componentInputTypeDeposit {
+      margin-top: 0;
     }
   }
 `

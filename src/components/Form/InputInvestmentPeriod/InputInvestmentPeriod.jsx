@@ -1,30 +1,49 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import Label from '../../App/Common/Form/Label/Label'
 import StyledInputRange from '../../styled/StyledInputRange'
+import StyledLabel from '../../styled/StyledLabel'
+
+const Label = styled(StyledLabel)`
+  line-height: 1.31;
+  margin-bottom: 15px;
+`
 
 const Datalist = styled.datalist`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 1px 0 0;
+  margin: 5px 0 0;
 
   & option {
     width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
     color: ${(props) => props.theme.palette.shades.secondary[200]};
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
+    line-height: 1.31;
     padding: 0;
     text-align: center;
+  }
+
+  @media (min-width: 480px) {
+    & option {
+      font-size: 1.6rem;
+    }
   }
 `
 
 function InputInvestmentPeriod() {
   return (
     <BoxSectionForm id='componentInputInvestmentPeriod'>
-      <Label>Срок инвестиций ( Месяцев )</Label>
+      <Label htmlFor='inputRangeInvestmentPeriod'>Срок инвестиций ( Месяцев )</Label>
 
-      <StyledInputRange id='investmentPeriod' $margin='0 0 4px 0' type='range' min='1' max='12' list='range-list' />
+      <StyledInputRange
+        id='inputRangeInvestmentPeriod'
+        $margin='0 0 4px 0'
+        type='range'
+        min='1'
+        max='12'
+        list='range-list'
+      />
 
       <Datalist id='range-list'>
         <option value='1'>1</option>
