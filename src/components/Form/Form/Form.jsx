@@ -38,10 +38,16 @@ const FormElement = styled.form`
       margin-top: 0;
     }
   }
+
+  @media (min-width: 960px) {
+    & #componentStartEndInvesting {
+      margin-bottom: 0px;
+    }
+  }
 `
 
 function Form({ children }) {
-  return <FormElement>{children}</FormElement>
+  return <FormElement id='formCalculatingProfitability'>{children}</FormElement>
 }
 
 export default Form

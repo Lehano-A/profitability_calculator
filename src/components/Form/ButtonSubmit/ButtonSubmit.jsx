@@ -12,8 +12,8 @@ const Button = styled.button`
     width: 280px;
     height: 56px;
     font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: -0.55px;
+    font-weight: 900;
+    letter-spacing: -1.66px;
   }
 
   @media (min-width: 480px) {
@@ -22,6 +22,14 @@ const Button = styled.button`
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -0.67px;
+  }
+
+  @media (min-width: 960px) {
+    width: 280px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -2px;
   }
 `
 

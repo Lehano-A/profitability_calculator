@@ -82,6 +82,10 @@ const InputNumber = styled(StyledInput)`
     font-size: 1.8rem;
     line-height: 1.17;
   }
+
+  @media (min-width: 960px) {
+    min-width: 180px;
+  }
 `
 
 const Unit = styled(StyledInput)`

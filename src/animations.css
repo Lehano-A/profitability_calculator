@@ -1,0 +1,31 @@
+@keyframes change-height-amount-investment {
+  from {
+    width: 120px;
+    height: 0px;
+  }
+  to {
+    width: 120px;
+    height: 100px;
+  }
+}
+
+@keyframes change-height-with-profit {
+  from {
+    width: 120px;
+    height: 0px;
+  }
+  to {
+    width: 120px;
+    height: 191.5px;
+  }
+}
+
+@keyframes to-full-opacity {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

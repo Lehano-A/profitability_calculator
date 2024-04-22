@@ -10,7 +10,20 @@ import StartEndInvesting from '../Form/StartEndInvesting/StartEndInvesting'
 import ListGeneralСalculation from '../Form/ListGeneralСalculation/ListGeneralСalculation'
 
 const CommonBox = styled.div`
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: row;
+  }
+`
+
+const MainBox = styled.div`
   margin: 60px 20px 0;
+  ${'' /* width: 100%; */}
+  @media (min-width: 960px) {
+    min-width: 600px;
+    margin: 90px 20px;
+    width: 100%;
+  }
 `
 
 const BoxTypeDepositAndMonetaryUnit = styled.div`
@@ -47,24 +60,27 @@ const BoxInvestmentPeriodAndInterestRate = styled.div`
 function App() {
   return (
     <CommonBox>
-      <Header />
+      <MainBox>
+        <Header />
 
-      <Form>
-        <BoxTypeDepositAndMonetaryUnit id='boxTypeDepositAndMonetaryUnit'>
-          <InputTypeDeposit />
-          <MonetaryUnit />
-        </BoxTypeDepositAndMonetaryUnit>
+        <Form>
+          <BoxTypeDepositAndMonetaryUnit id='boxTypeDepositAndMonetaryUnit'>
+            <InputTypeDeposit />
+            <MonetaryUnit />
+          </BoxTypeDepositAndMonetaryUnit>
 
-        <InputAmountInvestment />
+          <InputAmountInvestment />
 
-        <BoxInvestmentPeriodAndInterestRate id='boxInvestmentPeriodAndInterestRate'>
-          <InputInvestmentPeriod />
-          <CalculationInterestRate />
-        </BoxInvestmentPeriodAndInterestRate>
+          <BoxInvestmentPeriodAndInterestRate id='boxInvestmentPeriodAndInterestRate'>
+            <InputInvestmentPeriod />
+            <CalculationInterestRate />
+          </BoxInvestmentPeriodAndInterestRate>
 
-        <StartEndInvesting />
-        <ListGeneralСalculation />
-      </Form>
+          <StartEndInvesting />
+        </Form>
+      </MainBox>
+
+      <ListGeneralСalculation />
     </CommonBox>
   )
 }
