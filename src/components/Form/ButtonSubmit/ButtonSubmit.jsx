@@ -9,7 +9,8 @@ const Button = styled.button`
   line-height: 1.17;
 
   @media (min-width: 320px) {
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     height: 56px;
     font-size: 1.4rem;
     font-weight: 900;
@@ -17,24 +18,38 @@ const Button = styled.button`
   }
 
   @media (min-width: 480px) {
-    width: 420px;
+    max-width: 420px;
     height: 70px;
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -0.67px;
   }
 
+  @media (min-width: 640px) {
+    max-width: 600px;
+  }
+
   @media (min-width: 960px) {
-    width: 280px;
+    width: 100%;
     padding: 0;
     font-size: 16px;
     font-weight: 900;
     letter-spacing: -2px;
   }
+
+  @media (min-width: 1200px) {
+    color: ${(props) => props.theme.palette.primary};
+    background-color: ${(props) => props.theme.palette.tertiary};
+    letter-spacing: -0.75px;
+  }
 `
 
 function ButtonSubmit() {
-  return <Button type='submit'>Инвестировать сейчас</Button>
+  return (
+    <Button type='submit' form='formCalculatingProfitability'>
+      Инвестировать сейчас
+    </Button>
+  )
 }
 
 export default ButtonSubmit

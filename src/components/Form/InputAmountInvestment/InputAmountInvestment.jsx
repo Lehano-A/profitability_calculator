@@ -22,15 +22,6 @@ const BoxInputNumberAndUnit = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-
-  @media (min-width: 480px) {
-    max-width: 200px;
-  }
-
-  @media (min-width: 640px) {
-    min-width: 220px;
-    max-width: 350px;
-  }
 `
 
 const InputRange = styled(StyledInputRange)`
@@ -85,6 +76,10 @@ const InputNumber = styled(StyledInput)`
 
   @media (min-width: 960px) {
     min-width: 180px;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 100px;
   }
 `
 

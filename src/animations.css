@@ -1,4 +1,4 @@
-@keyframes change-height-amount-investment {
+@keyframes change-height-amount-investment-120-width {
   from {
     width: 120px;
     height: 0px;
@@ -9,7 +9,21 @@
   }
 }
 
-@keyframes change-height-with-profit {
+
+@keyframes change-height-amount-investment-160-width {
+  from {
+    width: 160px;
+    height: 0px;
+  }
+  to {
+    width: 160px;
+    height: 100px;
+  }
+}
+
+
+
+@keyframes change-height-with-profit-120-width {
   from {
     width: 120px;
     height: 0px;
@@ -19,6 +33,19 @@
     height: 191.5px;
   }
 }
+
+
+@keyframes change-height-with-profit-160-width {
+  from {
+    width: 160px;
+    height: 0px;
+  }
+  to {
+    width: 160px;
+    height: 191.5px;
+  }
+}
+
 
 @keyframes to-full-opacity {
   from {

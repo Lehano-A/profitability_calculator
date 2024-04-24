@@ -1,33 +1,67 @@
 import styled from 'styled-components'
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
-import HistogramInvestment from './HistogramInvestment/HistogramInvestment'
+import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
 
-const Box = styled.div`
+const BoxList = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 348px;
-  background-color: ${(props) => props.theme.palette.shades.secondary[100]};
+  justify-content: end;
   line-height: 1.31;
-  padding: 0 20px;
 
   @media (min-width: 960px) {
-    min-height: 525px;
-    min-width: 280px;
-    max-width: 450px;
     width: 100%;
-    padding-bottom: 90px;
-    justify-content: flex-end;
+  }
+
+  @media (min-width: 1200px) {
   }
 `
 
-const List = styled.ul`
+const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
+
   width: 100%;
   margin: 40px 0 30px;
   padding: 0;
+
+  @media (min-width: 640px) {
+    margin: 0 0 30px 0;
+  }
+`
+
+const ListHistograms = styled(StyledList)`
+  display: none;
+
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+`
+
+const ListInvestment = styled(StyledList)`
+  & > span:last-child {
+    white-space: nowrap;
+  }
+
+  & li:nth-child(1) {
+    margin-bottom: 10px;
+  }
+
+  & li:nth-child(2) {
+    padding-bottom: 18px;
+    border-bottom: 2px solid ${(props) => props.theme.palette.shades.secondary[200]};
+  }
+
+  & li:last-child {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+  }
 `
 
 const Item = styled.li`
@@ -41,33 +75,9 @@ const Item = styled.li`
     line-height: 1.31;
   }
 
-  & > span:last-child {
-    white-space: nowrap;
-  }
-
-  &:first-child {
-    display: none;
-    justify-content: center;
-    margin-bottom: 30px;
-
-    @media (min-width: 960px) {
-      display: flex;
-    }
-  }
-
-  &:nth-child(2) {
-    margin-bottom: 10px;
-  }
-
-  &:nth-child(3) {
-    padding-bottom: 18px;
-    border-bottom: 2px solid ${(props) => props.theme.palette.shades.secondary[200]};
-  }
-
-  &:last-child {
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
+  @media (min-width: 1200px) {
+    font-size: 1.8rem;
+    line-height: 1.17;
   }
 `
 
@@ -80,34 +90,46 @@ const Output = styled(StyledOutput)`
   @media (min-width: 960px) {
     font-size: 2rem;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 2.4rem;
+  }
 `
 
 function ListGeneralСalculation() {
   return (
-    <Box id='componentListGeneralСalculation' form='formCalculatingProfitability'>
-      <List>
-        <Item>
-          <HistogramInvestment />
-        </Item>
+      <BoxList>
+        <ListHistograms>
+          <Item>
+            <HistogramInvestment type='amountInvestment' />
+          </Item>
 
-        <Item>
-          <span>Инвестиция</span>
-          <output htmlFor='amountInvestment'>10,000 BTC</output>
-        </Item>
-        <Item>
-          <span>Процент прибыли</span>
-          <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
-        </Item>
-        <Item>
-          <span>
-            Прибыль с <br /> инвестиции
-          </span>
-          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</Output>
-        </Item>
-      </List>
+          <Item>
+            <HistogramInvestment type='investmentWithProfit' />
+          </Item>
+        </ListHistograms>
 
-      <ButtonSubmit />
-    </Box>
+        <ListInvestment>
+          <Item>
+            <span>Инвестиция</span>
+            <output htmlFor='amountInvestment'>10,000 BTC</output>
+          </Item>
+
+          <Item>
+            <span>Процент прибыли</span>
+            <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
+          </Item>
+
+          <Item>
+            <span>
+              Прибыль с <br /> инвестиции
+            </span>
+            <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</Output>
+          </Item>
+        </ListInvestment>
+
+        <ButtonSubmit />
+      </BoxList>
   )
 }
 

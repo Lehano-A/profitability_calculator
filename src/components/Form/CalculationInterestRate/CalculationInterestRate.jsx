@@ -12,6 +12,10 @@ const Box = styled.div`
   width: 100%;
   border-radius: 15px;
   background-color: ${(props) => props.theme.palette.shades.secondary[100]};
+
+  @media (min-width: 1200px) {
+    max-width: 200px;
+  }
 `
 
 const Label = styled(StyledLabel)`
