@@ -10,6 +10,11 @@ const Radio = styled.input`
   position: absolute;
   opacity: 0;
   margin: 0;
+
+  &:checked {
+    color: ${(props) => props.theme.palette.primary};
+    border-bottom: 3px solid ${(props) => props.theme.palette.primary};
+  }
 `
 
 const Label = styled.label`
@@ -19,6 +24,7 @@ const Label = styled.label`
   letter-spacing: 0.06px;
   text-transform: uppercase;
   line-height: 1.17;
+  cursor: pointer;
 
   &:not(:first-child) {
     padding-left: 3px;
@@ -52,9 +58,8 @@ function MonetaryUnit() {
   return (
     <Fieldset id='componentMonetaryUnit'>
       {namesUnits.map((name, id) => (
-        <Label key={id}>
-          <Radio type='radio' name='monetaryUnit' />
-
+        <Label key={id} htmlFor={name}>
+          <Radio defaultChecked={name === 'BTC' && true} type='radio' name='monetaryUnit' id={name} value={name} />
           {name}
         </Label>
       ))}
