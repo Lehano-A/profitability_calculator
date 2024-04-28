@@ -98,38 +98,38 @@ const Output = styled(StyledOutput)`
 
 function ListGeneralСalculation() {
   return (
-      <BoxList>
-        <ListHistograms>
-          <Item>
-            <HistogramInvestment type='amountInvestment' />
-          </Item>
+    <BoxList>
+      <ListHistograms>
+        <Item>
+          <HistogramInvestment type='amountInvestment' />
+        </Item>
 
-          <Item>
-            <HistogramInvestment type='investmentWithProfit' />
-          </Item>
-        </ListHistograms>
+        <Item>
+          <HistogramInvestment type='investmentWithProfit' />
+        </Item>
+      </ListHistograms>
 
-        <ListInvestment>
-          <Item>
-            <span>Инвестиция</span>
-            <output htmlFor='amountInvestment'>10,000 BTC</output>
-          </Item>
+      <ListInvestment>
+        <Item>
+          <span>Инвестиция</span>
+          <output htmlFor='amountInvestment'>10,000 BTC</output>
+        </Item>
 
-          <Item>
-            <span>Процент прибыли</span>
-            <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
-          </Item>
+        <Item>
+          <span>Процент прибыли</span>
+          <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
+        </Item>
 
-          <Item>
-            <span>
-              Прибыль с <br /> инвестиции
-            </span>
-            <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</Output>
-          </Item>
-        </ListInvestment>
+        <Item>
+          <span>
+            Прибыль с <br /> инвестиции
+          </span>
+          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</Output>
+        </Item>
+      </ListInvestment>
 
-        <ButtonSubmit />
-      </BoxList>
+      <ButtonSubmit />
+    </BoxList>
   )
 }
 

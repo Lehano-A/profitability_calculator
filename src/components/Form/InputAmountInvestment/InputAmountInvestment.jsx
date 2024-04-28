@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
-import StyledInputRange from '../../styled/StyledInputRange'
 import StyledLabel from '../../styled/StyledLabel'
+
+import InputRange from '../../App/Common/Form/InputRange/InputRange'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;
@@ -22,20 +23,6 @@ const BoxInputNumberAndUnit = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-`
-
-const InputRange = styled(StyledInputRange)`
-  display: none;
-  width: 100%;
-
-  @media (min-width: 480px) {
-    display: block;
-    min-width: 220px;
-  }
-
-  @media (min-width: 640px) {
-    min-width: 320px;
-  }
 `
 
 const InputNumber = styled(StyledInput)`
@@ -103,7 +90,6 @@ const Unit = styled(StyledInput)`
 
   @media (min-width: 640px) {
     font-size: 1.8rem;
-    line-height: 3;
   }
 `
 
@@ -113,10 +99,18 @@ function InputAmountInvestment() {
       <Label htmlFor='inputRangeAmountInvestment'>Сумма инвестиций</Label>
 
       <BoxInputs>
-        <InputRange type='range' id='inputRangeAmountInvestment' />
-
+        <InputRange
+          settings={{
+            defaultValue: 10000,
+            min: 0,
+            max: 50000,
+            step: 100,
+            type: 'range',
+            id: 'inputRangeAmountInvestment',
+          }}
+        />
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
-          <InputNumber id='amountInvestment' type='number' value='10.000' />
+          <InputNumber id='amountInvestment' type='number' defaultValue='10000' max='100000' />
           <Unit as='span'>BTC</Unit>
         </BoxInputNumberAndUnit>
       </BoxInputs>

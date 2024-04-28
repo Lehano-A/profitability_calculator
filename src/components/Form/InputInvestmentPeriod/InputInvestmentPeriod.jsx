@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import StyledInputRange from '../../styled/StyledInputRange'
 import StyledLabel from '../../styled/StyledLabel'
+
+import InputRange from '../../App/Common/Form/InputRange/InputRange'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;
@@ -36,13 +37,15 @@ function InputInvestmentPeriod() {
     <BoxSectionForm id='componentInputInvestmentPeriod'>
       <Label htmlFor='inputRangeInvestmentPeriod'>Срок инвестиций ( Месяцев )</Label>
 
-      <StyledInputRange
-        id='inputRangeInvestmentPeriod'
-        $margin='0 0 4px 0'
-        type='range'
-        min='1'
-        max='12'
-        list='range-list'
+      <InputRange
+        settings={{
+          defaultValue: 4,
+          min: 1,
+          max: 12,
+          $margin: '0 0 4px 0',
+          list: 'range-list',
+          id: 'inputRangeInvestmentPeriod',
+        }}
       />
 
       <Datalist id='range-list'>

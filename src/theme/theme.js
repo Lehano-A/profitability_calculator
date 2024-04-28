@@ -21,6 +21,14 @@ const lightTheme = {
     primary: '#fbed10',
     secondary: '#999999',
     tertiary: '#222',
+    rgb: {
+      primary: '251, 237, 16',
+      shades: {
+        secondary: {
+          200: '238, 238, 238',
+        },
+      },
+    },
 
     shades: {
       secondary: {
