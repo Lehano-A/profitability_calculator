@@ -32,12 +32,12 @@ const MainBox = styled.div`
   @media (min-width: 960px) {
     width: 600px;
     justify-content: end;
-    padding: 0 40px 0 20px;
+    padding: 0 20px 0 20px;
   }
 
   @media (min-width: 1200px) {
     width: 700px;
-    padding: 0 70px 0 30px;
+    padding: 0 50px 0 30px;
   }
 `
 
