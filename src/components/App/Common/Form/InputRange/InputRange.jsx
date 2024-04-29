@@ -9,13 +9,11 @@ const StyledBoxInputRange = styled.div`
 
 const InputRangeElement = styled(StyledInputRange)`
   position: relative;
-  display: none;
   width: 100%;
   background: transparent;
   z-index: 1;
 
   @media (min-width: 480px) {
-    display: block;
     min-width: 220px;
   }
 
