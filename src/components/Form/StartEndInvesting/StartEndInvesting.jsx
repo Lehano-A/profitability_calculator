@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
-import StyledInputRange from '../../styled/StyledInputCalendar'
 import StyledLabel from '../../styled/StyledLabel'
+import StyledInputCalendar from '../../styled/StyledInputCalendar'
 
 const Box = styled.div`
   display: flex;
@@ -32,27 +32,33 @@ const Box = styled.div`
     }
   }
 `
-const Label = styled(StyledLabel)``
+const Label = styled(StyledLabel)`
+  display: flex;
+  flex-direction: column;
 
-const StartInvesting = styled(StyledInputRange)`
-  height: 54px;
+  & > span {
+    margin-bottom: 10px;
+  }
 `
-const EndInvesting = styled(StyledInputRange)`
-  height: 54px;
-  color: ${(props) => props.theme.palette.secondary};
-`
+
+const StartInvesting = styled(StyledInputCalendar)``
+const EndInvesting = styled(StyledInputCalendar)``
 
 function StartEndInvesting() {
   return (
     <Box id='componentStartEndInvesting'>
       <BoxSectionForm>
-        <Label id='labelStartInvesting'>Старт инвестиции</Label>
-        <StartInvesting type='date' />
+        <Label id='labelStartInvesting'>
+          <span>Старт инвестиции</span>
+          <StartInvesting type='date' pattern='\d{2}-\d{2}-\d{4}' />
+        </Label>
       </BoxSectionForm>
 
       <BoxSectionForm>
-        <Label id='labelEndInvesting'>Завершение инвестиции</Label>
-        <EndInvesting type='date' />
+        <Label id='labelEndInvesting'>
+          <span>Завершение инвестиции</span>
+          <EndInvesting type='date' />
+        </Label>
       </BoxSectionForm>
     </Box>
   )
