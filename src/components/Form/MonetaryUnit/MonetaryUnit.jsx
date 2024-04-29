@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Fieldset = styled.fieldset`
+  display: flex;
   border: none;
   padding: 0;
   margin: 0;
@@ -9,26 +10,17 @@ const Fieldset = styled.fieldset`
 const Radio = styled.input`
   position: absolute;
   opacity: 0;
-  margin: 0;
-
-  &:checked {
-    color: ${(props) => props.theme.palette.primary};
-    border-bottom: 3px solid ${(props) => props.theme.palette.primary};
-  }
+  z-index: -1;
 `
 
 const Label = styled.label`
   font-size: 18px;
   font-weight: 700;
-  padding: 0 3px 6px 0;
+  padding: 0 3px 6px;
   letter-spacing: 0.06px;
   text-transform: uppercase;
   line-height: 1.17;
   cursor: pointer;
-
-  &:not(:first-child) {
-    padding-left: 3px;
-  }
 
   &:not(:last-child) {
     margin: 0 14px 0 0;
