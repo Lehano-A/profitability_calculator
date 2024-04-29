@@ -19,6 +19,14 @@ const GlobalStyle = createGlobalStyle`
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
   }
+
+  input:focus,
+  select:focus,
+  button:focus
+  {
+    outline: none;
+    border: ${props => `2px solid ${props.theme.palette.tertiary}`};
+  }
 `
 
 export default GlobalStyle

@@ -48,7 +48,6 @@ const InputNumber = styled(StyledInput)`
   }
 
   &:focus {
-    border: 2px solid black;
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -56,7 +55,7 @@ const InputNumber = styled(StyledInput)`
   }
 
   &:focus + span {
-    border: 2px solid black;
+    border: ${props => `2px solid ${props.theme.palette.tertiary}`};
     border-left: none;
   }
 
