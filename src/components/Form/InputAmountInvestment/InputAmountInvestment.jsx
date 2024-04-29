@@ -13,8 +13,17 @@ const BoxInputs = styled.div`
   display: flex;
   align-items: center;
 
-  & > :first-child {
-    margin-right: 40px;
+  @media (min-width: 320px) {
+    & > :first-child {
+      display: none;
+    }
+  }
+
+  @media (min-width: 480px) {
+    & > :first-child {
+      display: flex;
+      margin-right: 40px;
+    }
   }
 `
 
@@ -105,7 +114,6 @@ function InputAmountInvestment() {
             min: 0,
             max: 50000,
             step: 100,
-            type: 'range',
             id: 'inputRangeAmountInvestment',
           }}
         />
