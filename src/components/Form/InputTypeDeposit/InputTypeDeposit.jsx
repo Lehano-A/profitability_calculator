@@ -9,7 +9,8 @@ const Label = styled(StyledLabel)``
 const Select = styled(StyledInput)`
   background: url(${arrowSelect}) no-repeat left 49%;
   background-position-x: calc(100% - 19px);
-
+  appearance: none;
+  
   @media (min-width: 320px) {
     max-width: 280px;
     font-size: 1.6rem;
