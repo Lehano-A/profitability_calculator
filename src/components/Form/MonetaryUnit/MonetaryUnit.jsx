@@ -2,9 +2,10 @@ import styled from 'styled-components'
 
 const Fieldset = styled.fieldset`
   display: flex;
-  border: none;
+  min-height: 31px;
   padding: 0;
   margin: 0;
+  border: none;
 `
 
 const Radio = styled.input`
@@ -34,13 +35,9 @@ const Label = styled.label`
     color: ${(props) => props.theme.palette.primary};
   }
 
-  &:focus {
-    color: ${(props) => props.theme.palette.primary};
-  }
-
   &:has(${Radio}:checked) {
     color: ${(props) => props.theme.palette.primary};
-    border-bottom: 3px solid ${(props) => props.theme.palette.primary};
+    border-bottom: 4px solid ${(props) => props.theme.palette.primary};
   }
 `
 
