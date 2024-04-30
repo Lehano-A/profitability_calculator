@@ -22,10 +22,16 @@ const GlobalStyle = createGlobalStyle`
 
   input:focus,
   select:focus,
-  button:focus
-  {
-    outline: none;
-    border: ${props => `2px solid ${props.theme.palette.tertiary}`};
+  #boxInputRangeAndDatalist:focus-within  {
+    border-color: transparent;
+    border-radius: 9px;
+    outline: ${(props) => props.theme.getParamsFocus()};
+    outline-offset: -2px;
+  }
+
+  input[type="range"]:focus,
+  #boxInputRangeAndDatalist:focus-within {
+    outline-offset: 6px;
   }
 `
 
