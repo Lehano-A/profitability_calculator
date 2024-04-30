@@ -41,6 +41,11 @@ const Button = styled.button`
     color: ${(props) => props.theme.palette.primary};
     background-color: ${(props) => props.theme.palette.tertiary};
     letter-spacing: -0.75px;
+
+    &:focus {
+      outline: none;
+      border: ${props => `2px solid ${props.theme.palette.primary}`};
+    }
   }
 `
 
