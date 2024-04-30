@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import StyledLabel from '../../styled/StyledLabel'
-
 import InputRange from '../../App/Common/Form/InputRange/InputRange'
+import { useRef } from 'react'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;
@@ -55,7 +55,7 @@ const InputNumber = styled(StyledInput)`
   }
 
   &:focus + span {
-    border: ${props => `2px solid ${props.theme.palette.tertiary}`};
+    border: ${(props) => `2px solid ${props.theme.palette.tertiary}`};
     border-left: none;
   }
 
@@ -102,6 +102,12 @@ const Unit = styled(StyledInput)`
 `
 
 function InputAmountInvestment() {
+  const refInputNumber = useRef(null)
+
+  function handleOnClickUnit() {
+    refInputNumber.current.focus()
+  }
+
   return (
     <BoxSectionForm id='componentInputAmountInvestment'>
       <Label htmlFor='inputRangeAmountInvestment'>Сумма инвестиций</Label>
@@ -117,8 +123,10 @@ function InputAmountInvestment() {
           }}
         />
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
-          <InputNumber id='amountInvestment' type='number' defaultValue='10000' max='100000' />
-          <Unit as='span'>BTC</Unit>
+          <InputNumber ref={refInputNumber} id='amountInvestment' type='number' defaultValue='10000' max='100000' />
+          <Unit as='span' onClick={handleOnClickUnit}>
+            BTC
+          </Unit>
         </BoxInputNumberAndUnit>
       </BoxInputs>
     </BoxSectionForm>
