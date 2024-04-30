@@ -39,6 +39,10 @@ const lightTheme = {
   },
 
   elements,
+
+  getParamsFocus: (color = 'primary') => {
+    return `5px solid ${lightTheme.palette[color]}`
+  },
 }
 
 export { lightTheme }
