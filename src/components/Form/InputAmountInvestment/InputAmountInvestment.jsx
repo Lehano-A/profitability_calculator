@@ -3,7 +3,7 @@ import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import StyledLabel from '../../styled/StyledLabel'
 import InputRange from '../../App/Common/Form/InputRange/InputRange'
-import { useRef } from 'react'
+import { useState } from 'react'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;
@@ -38,25 +38,9 @@ const InputNumber = styled(StyledInput)`
   width: 100%;
   font-weight: 700;
 
-  border-right: none;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
-  }
-
-  &:focus {
-    border-right: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    outline: none;
-  }
-
-  &:focus + span {
-    border: ${(props) => `2px solid ${props.theme.palette.tertiary}`};
-    border-left: none;
   }
 
   @media (min-width: 320px) {
@@ -81,15 +65,16 @@ const InputNumber = styled(StyledInput)`
 const Unit = styled(StyledInput)`
   display: flex;
   align-items: center;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   line-height: 48px;
-
-  color: ${(props) => props.theme.palette.secondary};
-
   font-weight: 500;
-  padding: 23px 20px 21px 0;
-  border-left: none;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  padding-right: 20px;
+  border: none;
+  color: ${(props) => props.theme.palette.secondary};
 
   @media (min-width: 320px) {
     font-size: 1.4rem;
@@ -102,10 +87,12 @@ const Unit = styled(StyledInput)`
 `
 
 function InputAmountInvestment() {
-  const refInputNumber = useRef(null)
+  const [inputNumberValue, setInputNumberValue] = useState('10000')
 
-  function handleOnClickUnit() {
-    refInputNumber.current.focus()
+  function handleOnChangeInputNumber(e) {
+    if (e.target.value.length <= 5) {
+      setInputNumberValue(e.target.value)
+    }
   }
 
   return (
@@ -122,11 +109,17 @@ function InputAmountInvestment() {
             id: 'inputRangeAmountInvestment',
           }}
         />
+
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
-          <InputNumber ref={refInputNumber} id='amountInvestment' type='number' defaultValue='10000' max='100000' />
-          <Unit as='span' onClick={handleOnClickUnit}>
-            BTC
-          </Unit>
+          <InputNumber
+            value={inputNumberValue}
+            onChange={handleOnChangeInputNumber}
+            id='amountInvestment'
+            type='number'
+            max='100000'
+          />
+
+          <Unit as='span'>BTC</Unit>
         </BoxInputNumberAndUnit>
       </BoxInputs>
     </BoxSectionForm>
