@@ -15,6 +15,11 @@ const Button = styled.button`
     font-size: 1.4rem;
     font-weight: 900;
     letter-spacing: -1.66px;
+
+    &:focus {
+      border-color: transparent;
+      outline: ${(props) => props.theme.getParamsFocus('tertiary')};
+    }
   }
 
   @media (min-width: 480px) {
@@ -43,8 +48,8 @@ const Button = styled.button`
     letter-spacing: -0.75px;
 
     &:focus {
-      outline: none;
-      border: ${props => `2px solid ${props.theme.palette.primary}`};
+      border-color: transparent;
+      outline: ${(props) => props.theme.getParamsFocus()};
     }
   }
 `
