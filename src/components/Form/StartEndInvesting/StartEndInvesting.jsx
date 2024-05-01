@@ -48,17 +48,17 @@ function StartEndInvesting() {
   return (
     <Box id='componentStartEndInvesting'>
       <BoxSectionForm>
-        <Label id='labelStartInvesting'>
-          <span>Старт инвестиции</span>
-          <StartInvesting type='date' pattern='\d{2}-\d{2}-\d{4}' />
+        <Label htmlFor='inputDateStartInvesting' id='labelStartInvesting'>
+          Старт инвестиции
         </Label>
+        <StartInvesting id='inputDateStartInvesting' type='date' pattern='\d{2}-\d{2}-\d{4}' />
       </BoxSectionForm>
 
       <BoxSectionForm>
-        <Label id='labelEndInvesting'>
-          <span>Завершение инвестиции</span>
-          <EndInvesting type='date' />
+        <Label htmlFor='inputDateEndInvesting' id='labelEndInvesting'>
+          Завершение инвестиции
         </Label>
+        <EndInvesting id='inputDateEndInvesting' type='date' />
       </BoxSectionForm>
     </Box>
   )
