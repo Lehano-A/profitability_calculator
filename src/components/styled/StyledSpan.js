@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { labelMixin } from './mixins/mixins'
 
-const StyledLabel = styled.label`
+const StyledSpan = styled.span`
   ${labelMixin}
-  align-self: start;
 `
 
-export default StyledLabel
+export default StyledSpan
