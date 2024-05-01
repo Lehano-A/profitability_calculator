@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import StyledLabel from '../../styled/StyledLabel'
+import StyledSpan from '../../styled/StyledSpan'
 
 const Box = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const Box = styled.div`
   }
 `
 
-const Label = styled(StyledLabel)`
+const Span = styled(StyledSpan)`
   line-height: 1.31;
 `
 
@@ -46,7 +46,7 @@ const UnitMeasurement = styled.span`
 function CalculationInterestRate() {
   return (
     <Box id='componentCalculationInterestRate'>
-      <Label as='span'>Процентная ставка</Label>
+      <Span as='span'>Процентная ставка</Span>
 
       <BoxOutput>
         <Output id='interestRate' htmlFor='amountInvestment inputRangeInvestmentPeriod'>

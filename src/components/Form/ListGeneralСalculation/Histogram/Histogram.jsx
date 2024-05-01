@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import StyledLabel from '../../../styled/StyledLabel'
 import StyledOutput from '../../../styled/StyledOutput'
 import '../../../../animations.css'
+import StyledSpan from '../../../styled/StyledSpan'
 
 const BoxMeterInvestment = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ const HistogramInvestmentProfit = styled(StyledDivAsMeter)`
   }
 `
 
-const ItemName = styled(StyledLabel)`
+const ItemName = styled(StyledSpan)`
   font-size: 1.4rem;
   line-height: 1.31;
   animation: to-full-opacity 1s ease-in-out;
@@ -71,7 +71,7 @@ function Histogram({ type }) {
     <>
       {type === 'amountInvestment' && (
         <BoxMeterInvestment>
-          <ItemName as='span'>Инвестировали</ItemName>
+          <ItemName>Инвестировали</ItemName>
           <Output>10,000 BTC</Output>
           <MeterHidden min='0' max='10000' value='10000' />
           <HistogramInvestment />
@@ -80,7 +80,7 @@ function Histogram({ type }) {
 
       {type === 'investmentWithProfit' && (
         <BoxMeterInvestment>
-          <ItemName as='span'>Получаете</ItemName>
+          <ItemName>Получаете</ItemName>
           <Output>19,150 BTC</Output>
           <MeterHidden min='0' max='10000' value='19150' />
           <HistogramInvestmentProfit />
