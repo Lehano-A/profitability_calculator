@@ -22,22 +22,23 @@ const Label = styled.label`
   text-transform: uppercase;
   line-height: 1.17;
   cursor: pointer;
+  color: ${(props) => props.theme.palette.label.radio};
 
   &:not(:last-child) {
     margin: 0 14px 0 0;
   }
 
   &:hover {
-    color: ${(props) => props.theme.palette.primary};
+    color: ${(props) => props.theme.palette.label.hover};
   }
 
   &:active {
-    color: ${(props) => props.theme.palette.primary};
+    color: ${(props) => props.theme.palette.label.active};
   }
 
   &:has(${Radio}:checked) {
-    color: ${(props) => props.theme.palette.primary};
-    border-bottom: 4px solid ${(props) => props.theme.palette.primary};
+    color: ${(props) => props.theme.palette.input.checked.radio};
+    border-bottom: 4px solid ${(props) => props.theme.palette.input.border.label};
   }
 `
 

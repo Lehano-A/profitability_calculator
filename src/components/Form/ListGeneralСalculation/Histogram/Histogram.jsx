@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import StyledOutput from '../../../styled/StyledOutput'
-import '../../../../animations.css'
 import StyledSpan from '../../../styled/StyledSpan'
+import '../../../../animations.css'
 
 const BoxMeterInvestment = styled.div`
   display: flex;
@@ -21,6 +21,7 @@ const StyledDivAsMeter = styled.div`
   background-color: #fff;
   box-shadow: 20px 10px 60px rgba(0, 0, 0, 0.07);
   border-radius: 15px;
+  background: ${(props) => props.theme.palette.histogram.bg.primary};
 `
 
 const HistogramInvestment = styled(StyledDivAsMeter)`
@@ -34,7 +35,7 @@ const HistogramInvestment = styled(StyledDivAsMeter)`
 `
 
 const HistogramInvestmentProfit = styled(StyledDivAsMeter)`
-  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 52.16%, rgba(251, 237, 16, 1) 47.84%);
+  background: ${(props) => props.theme.getParamsHistogramBackground()};
 
   @media (min-width: 960px) {
     animation: change-height-with-profit-120-width 1s ease-in-out forwards;
@@ -59,6 +60,7 @@ const ItemName = styled(StyledSpan)`
 const Output = styled(StyledOutput)`
   font-size: 1.6rem;
   margin-bottom: 20px;
+  color: ${(props) => props.theme.palette.output.value};
   animation: to-full-opacity 1s ease-in-out;
 
   @media (min-width: 1200px) {

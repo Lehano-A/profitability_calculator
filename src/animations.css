@@ -9,7 +9,6 @@
   }
 }
 
-
 @keyframes change-height-amount-investment-160-width {
   from {
     width: 160px;
@@ -20,8 +19,6 @@
     height: 100px;
   }
 }
-
-
 
 @keyframes change-height-with-profit-120-width {
   from {
@@ -34,7 +31,6 @@
   }
 }
 
-
 @keyframes change-height-with-profit-160-width {
   from {
     width: 160px;
@@ -46,7 +42,6 @@
   }
 }
 
-
 @keyframes to-full-opacity {
   from {
     opacity: 0.2;
@@ -54,5 +49,23 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes from-left-to-right {
+  from {
+    left: -5%;
+  }
+  to {
+    left: calc(105% - 22px);
+  }
+}
+
+@keyframes from-right-to-left {
+  from {
+    left: calc(105% - 22px);
+  }
+  to {
+    left: -5%;
   }
 }

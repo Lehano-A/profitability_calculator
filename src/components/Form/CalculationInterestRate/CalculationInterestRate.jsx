@@ -11,7 +11,8 @@ const Box = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 15px;
-  background-color: ${(props) => props.theme.palette.shades.secondary[100]};
+
+  background-color: ${(props) => props.theme.palette.box};
 
   @media (min-width: 1200px) {
     max-width: 200px;
@@ -32,6 +33,8 @@ const Output = styled.output`
   font-weight: 700;
   line-height: 1.17;
 
+  color: ${(props) => props.theme.palette.output.value};
+
   &::after {
     content: '%';
     margin-right: 0.5rem; /* имитация пробела */
@@ -40,7 +43,7 @@ const Output = styled.output`
 
 const UnitMeasurement = styled.span`
   font-size: 1.4rem;
-  color: ${(props) => props.theme.palette.secondary};
+  color: ${(props) => props.theme.palette.output.value};
 `
 
 function CalculationInterestRate() {

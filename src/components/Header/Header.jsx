@@ -23,7 +23,7 @@ const Img = styled.img`
   width: 48px;
   height: 48px;
   border-radius: 9px;
-  background-color: ${(props) => props.theme.palette.primary};
+  background-color: ${(props) => props.theme.palette.logo.icon};
   padding: 9.75px 11.25px 9.75px 12px;
 
   @media (min-width: 320px) {
@@ -40,6 +40,7 @@ const Title = styled.h1`
   line-height: 1.17;
   word-break: break-word;
   margin: 0;
+  color: ${(props) => props.theme.palette.logo.title};
 
   @media (min-width: 320px) {
     font-size: 2rem;

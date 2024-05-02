@@ -6,7 +6,7 @@ const StyledInputRange = styled(StyledInput)`
   height: 38px;
   padding: 0;
   border: none;
-  margin: ${(props) => (props.$margin ? props.$margin : 0)};
+  margin: 0;
   appearance: none;
 
   &::-webkit-slider-thumb {
@@ -16,8 +16,7 @@ const StyledInputRange = styled(StyledInput)`
     padding: 19px 7.5px;
     border-radius: 3px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-
+    background-color: ${(props) => props.theme.palette.inputRange.thumb.bg};
     margin-top: -${(props) => props.theme.elements.inputRange.thumb.height / 2 - props.theme.elements.inputRange.track.height / 2}px;
     position: relative;
     cursor: pointer;
@@ -30,7 +29,7 @@ const StyledInputRange = styled(StyledInput)`
     border: none;
     border-radius: 3px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: ${(props) => props.theme.palette.inputRange.thumb.bg};
     margin-top: -${(props) => props.theme.elements.inputRange.thumb.height / 2 - props.theme.elements.inputRange.track.height / 2}px;
     position: relative;
     cursor: pointer;

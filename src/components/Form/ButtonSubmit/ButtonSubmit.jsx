@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Button = styled.button`
   border-radius: 0 90px;
   border: none;
-  background-color: ${(props) => props.theme.palette.primary};
+
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.17;
@@ -15,10 +15,12 @@ const Button = styled.button`
     font-size: 1.4rem;
     font-weight: 900;
     letter-spacing: -1.66px;
+    background-color: ${(props) => props.theme.palette.buttonSubmit.bg.primary};
+    color: ${(props) => props.theme.palette.buttonSubmit.text.secondary};
 
     &:focus {
       border-color: transparent;
-      outline: ${(props) => props.theme.getParamsFocus('tertiary')};
+      outline: ${(props) => props.theme.getParamsFocus('buttonSubmit', 'primary')};
     }
   }
 
@@ -43,13 +45,13 @@ const Button = styled.button`
   }
 
   @media (min-width: 1200px) {
-    color: ${(props) => props.theme.palette.primary};
-    background-color: ${(props) => props.theme.palette.tertiary};
+    color: ${(props) => props.theme.palette.buttonSubmit.text.primary};
+    background-color: ${(props) => props.theme.palette.buttonSubmit.bg.secondary};
     letter-spacing: -0.75px;
 
     &:focus {
       border-color: transparent;
-      outline: ${(props) => props.theme.getParamsFocus()};
+      outline: ${(props) => props.theme.getParamsFocus('buttonSubmit', 'secondary')};
     }
   }
 `

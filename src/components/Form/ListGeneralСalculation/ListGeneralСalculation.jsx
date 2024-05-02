@@ -14,9 +14,6 @@ const BoxList = styled.div`
   @media (min-width: 960px) {
     width: 100%;
   }
-
-  @media (min-width: 1200px) {
-  }
 `
 
 const StyledList = styled.ul`
@@ -54,7 +51,7 @@ const ListInvestment = styled(StyledList)`
 
   & li:nth-child(2) {
     padding-bottom: 18px;
-    border-bottom: 2px solid ${(props) => props.theme.palette.shades.secondary[200]};
+    border-bottom: 2px solid ${(props) => props.theme.palette.input.border};
   }
 
   & li:last-child {
@@ -68,7 +65,7 @@ const Item = styled.li`
   display: flex;
   justify-content: space-between;
   font-size: 1.8rem;
-  color: ${(props) => props.theme.palette.secondary};
+  color: ${(props) => props.theme.palette.list.key};
 
   @media (min-width: 960px) {
     font-size: 1.6rem;
@@ -83,6 +80,8 @@ const Item = styled.li`
 
 /* 9,150 BTC */
 const Output = styled(StyledOutput)`
+  color: ${(props) => props.theme.palette.output.value};
+
   @media (min-width: 480px) {
     font-size: 2.4rem;
   }

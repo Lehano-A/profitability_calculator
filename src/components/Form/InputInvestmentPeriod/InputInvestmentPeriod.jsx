@@ -18,11 +18,11 @@ const Datalist = styled.datalist`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 5px 0 0;
+  margin: 10px 0 0;
 
   & option {
     width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
-    color: ${(props) => props.theme.palette.shades.secondary[200]};
+    color: ${(props) => props.theme.palette.inputRange.option};
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1.31;
@@ -48,7 +48,6 @@ function InputInvestmentPeriod() {
             defaultValue: 4,
             min: 1,
             max: 12,
-            $margin: '0 0 4px 0',
             list: 'range-list',
             id: 'inputRangeInvestmentPeriod',
           }}

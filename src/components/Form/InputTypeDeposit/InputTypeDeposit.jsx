@@ -7,21 +7,46 @@ import StyledLabel from '../../styled/StyledLabel'
 const Label = styled(StyledLabel)``
 
 const Select = styled(StyledInput)`
-  background: url(${arrowSelect}) no-repeat left 49%;
   background-position-x: calc(100% - 19px);
-  appearance: none;
-  
+  -moz-appearance: none;
+  width: 100%;
+
   @media (min-width: 320px) {
-    max-width: 280px;
     font-size: 1.6rem;
     line-height: 1.31;
   }
 
   @media (min-width: 640px) {
-    min-width: 260px;
     font-size: 1.8rem;
     line-height: 1.17;
   }
+`
+
+const BoxSelectAndIcon = styled.div`
+  position: relative;
+  align-self: start;
+  width: 100%;
+
+  @media (min-width: 320px) {
+    max-width: 280px;
+  }
+
+  @media (min-width: 640px) {
+    min-width: 260px;
+  }
+`
+
+const IconInput = styled.img`
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 12px;
+
+  fill: red;
+  color: red;
+  filter: ${(props) => props.theme.palette.input.svg.filter};
 `
 
 function InputTypeDeposit() {
@@ -29,9 +54,13 @@ function InputTypeDeposit() {
     <BoxSectionForm id='componentInputTypeDeposit'>
       <Label htmlFor='typeDeposit'>Тип депозита</Label>
 
-      <Select as='select' id='typeDeposit'>
-        <option>Standart</option>
-      </Select>
+      <BoxSelectAndIcon>
+        <Select as='select' id='typeDeposit'>
+          <option>Standart</option>
+        </Select>
+
+        <IconInput src={arrowSelect} />
+      </BoxSelectAndIcon>
     </BoxSectionForm>
   )
 }

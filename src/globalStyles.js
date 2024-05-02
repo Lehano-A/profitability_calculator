@@ -11,13 +11,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-   display: flex;
+    display: flex;
     flex-direction: column;
     font-size: 1.4rem;
     margin: 0;
-   font-family: 'Roboto', sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+    background-color: ${(props) => props.theme.palette.mainBackground};
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   input:focus,

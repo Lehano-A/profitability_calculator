@@ -74,7 +74,7 @@ const Unit = styled(StyledInput)`
   font-weight: 500;
   padding-right: 20px;
   border: none;
-  color: ${(props) => props.theme.palette.secondary};
+  color: ${(props) => props.theme.palette.input.span};
 
   @media (min-width: 320px) {
     font-size: 1.4rem;
