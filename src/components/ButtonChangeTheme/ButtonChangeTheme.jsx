@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { CurrentThemeContext } from '../../Contexts/Contexts'
 
-const Box = styled.button`
+const Button = styled.button`
   position: absolute;
   top: 30px;
   display: flex;
@@ -66,9 +66,9 @@ function ButtonChangeTheme() {
   }
 
   return (
-    <Box $currentTheme={currentTheme} onClick={handleOnClick}>
+    <Button $currentTheme={currentTheme} onClick={handleOnClick}>
       <Thumb $animationForChangeTheme={animationForChangeTheme} $currentTheme={currentTheme} />
-    </Box>
+    </Button>
   )
 }
 

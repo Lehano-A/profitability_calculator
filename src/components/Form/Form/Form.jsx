@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import InputTypeDeposit from '../InputTypeDeposit/InputTypeDeposit'
+import MonetaryUnit from '../MonetaryUnit/MonetaryUnit'
+import InputAmountInvestment from '../InputAmountInvestment/InputAmountInvestment'
+import InputInvestmentPeriod from '../InputInvestmentPeriod/InputInvestmentPeriod'
+import CalculationInterestRate from '../CalculationInterestRate/CalculationInterestRate'
+import StartEndInvesting from '../StartEndInvesting/StartEndInvesting'
 
 const FormElement = styled.form`
   @media (min-width: 320px) {
@@ -46,8 +52,61 @@ const FormElement = styled.form`
   }
 `
 
-function Form({ children }) {
-  return <FormElement id='formCalculatingProfitability'>{children}</FormElement>
+const BoxTypeDepositAndMonetaryUnit = styled.div`
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: start;
+    align-items: last baseline;
+
+    & > :first-child {
+      margin-right: 40px;
+    }
+  }
+`
+
+const BoxInvestmentPeriodAndInterestRate = styled.div`
+  @media (min-width: 640px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & > :first-child {
+      margin-right: 40px;
+      min-width: 320px;
+      width: 100%;
+    }
+
+    & > :last-child {
+      max-width: 350px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    & > :last-child {
+      max-width: 200px;
+    }
+  }
+`
+
+function Form() {
+  return (
+    <FormElement id='formCalculatingProfitability'>
+      <BoxTypeDepositAndMonetaryUnit id='boxTypeDepositAndMonetaryUnit'>
+        <InputTypeDeposit />
+        <MonetaryUnit />
+      </BoxTypeDepositAndMonetaryUnit>
+
+      <InputAmountInvestment />
+
+      <BoxInvestmentPeriodAndInterestRate id='boxInvestmentPeriodAndInterestRate'>
+        <InputInvestmentPeriod />
+        <CalculationInterestRate />
+      </BoxInvestmentPeriodAndInterestRate>
+
+      <StartEndInvesting />
+    </FormElement>
+  )
 }
 
 export default Form
