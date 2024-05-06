@@ -2,6 +2,7 @@
   "name": "profitability_calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build ./docs",
+    "build": "rm -rf docs && react-scripts build && cp -r build docs && rm -rf build",
     "pretty": "npx prettier --write \"src/**/*.{js,jsx}\""
   },
   "eslintConfig": {
