@@ -52,7 +52,7 @@ function CalculationInterestRate() {
       <Span as='span'>Процентная ставка</Span>
 
       <BoxOutput>
-        <Output id='interestRate' htmlFor='amountInvestment inputRangeInvestmentPeriod'>
+        <Output id='interestRate' htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod'>
           0.75
         </Output>
         <UnitMeasurement>в день</UnitMeasurement>

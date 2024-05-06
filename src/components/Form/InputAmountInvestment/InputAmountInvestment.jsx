@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import StyledLabel from '../../styled/StyledLabel'
 import InputRange from '../../App/Common/Form/InputRange/InputRange'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CurrentSizeScreenContext } from '../../../contexts/contexts'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;
@@ -89,6 +90,10 @@ const Unit = styled(StyledInput)`
 function InputAmountInvestment() {
   const [inputNumberValue, setInputNumberValue] = useState('10000')
 
+  const currentSizeScreen = useContext(CurrentSizeScreenContext)
+
+  const theme = useTheme()
+
   function handleOnChangeInputNumber(e) {
     if (e.target.value.length <= 5) {
       setInputNumberValue(e.target.value)
@@ -97,7 +102,13 @@ function InputAmountInvestment() {
 
   return (
     <BoxSectionForm id='componentInputAmountInvestment'>
-      <Label htmlFor='inputRangeAmountInvestment'>Сумма инвестиций</Label>
+      <Label
+        htmlFor={
+          currentSizeScreen.width >= theme.breakpoints.s ? 'inputRangeAmountInvestment' : 'inputNumberAmountInvestment'
+        }
+      >
+        Сумма инвестиций
+      </Label>
 
       <BoxInputs>
         <InputRange
@@ -114,7 +125,7 @@ function InputAmountInvestment() {
           <InputNumber
             value={inputNumberValue}
             onChange={handleOnChangeInputNumber}
-            id='amountInvestment'
+            id='inputNumberAmountInvestment'
             type='number'
             max='100000'
           />

@@ -71,7 +71,7 @@ const Output = styled(StyledOutput)`
 function Histogram({ type }) {
   return (
     <>
-      {type === 'amountInvestment' && (
+      {type === 'inputNumberAmountInvestment' && (
         <BoxMeterInvestment>
           <ItemName>Инвестировали</ItemName>
           <Output>10,000 BTC</Output>

@@ -100,7 +100,7 @@ function ListGeneralСalculation() {
     <BoxList>
       <ListHistograms>
         <Item>
-          <HistogramInvestment type='amountInvestment' />
+          <HistogramInvestment type='inputNumberAmountInvestment' />
         </Item>
 
         <Item>
@@ -111,12 +111,12 @@ function ListGeneralСalculation() {
       <ListInvestment>
         <Item>
           <span>Инвестиция</span>
-          <output htmlFor='amountInvestment'>10,000 BTC</output>
+          <output htmlFor='inputNumberAmountInvestment'>10,000 BTC</output>
         </Item>
 
         <Item>
           <span>Процент прибыли</span>
-          <output htmlFor='amountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
+          <output htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
         </Item>
 
         <Item>

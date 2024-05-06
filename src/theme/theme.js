@@ -17,8 +17,16 @@ const elements = {
       min: 1,
       max: 12,
       defaultValue: 4,
-    }
+    },
   },
+}
+
+const breakpoints = {
+  xs: 320,
+  s: 480,
+  m: 640,
+  l: 960,
+  xl: 1200,
 }
 
 const lightThemeColors = {
@@ -149,6 +157,7 @@ const lightTheme = {
   },
 
   elements,
+  breakpoints,
 
   getParamsBackground,
   getParamsFocus,
@@ -289,6 +298,7 @@ const darkTheme = {
   },
 
   elements,
+  breakpoints,
 
   getParamsBackground,
   getParamsFocus,
