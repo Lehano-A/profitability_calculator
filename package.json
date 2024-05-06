@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf docs && react-scripts build && cp -r build docs && rm -rf build",
+    "build": "find docs -mindepth 1 ! -name 'CNAME' -delete && react-scripts build && cp -r build/* docs && rm -rf build",
     "pretty": "npx prettier --write \"src/**/*.{js,jsx}\""
   },
   "eslintConfig": {
