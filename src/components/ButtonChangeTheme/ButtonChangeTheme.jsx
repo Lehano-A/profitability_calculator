@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { CurrentThemeContext } from '../../Contexts/Contexts'
+import { CurrentThemeContext } from '../../contexts/contexts'
 
 const Button = styled.button`
   position: absolute;

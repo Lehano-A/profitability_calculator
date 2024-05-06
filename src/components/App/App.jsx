@@ -3,7 +3,7 @@ import GlobalStyle from '../../globalStyles'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../../theme/theme'
 import { useState } from 'react'
-import { CurrentThemeContext } from '../../Contexts/Contexts'
+import { CurrentThemeContext } from '../../contexts/contexts'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light')
