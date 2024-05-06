@@ -13,6 +13,11 @@ const elements = {
     track: {
       height: 10, // px
     },
+    settings: {
+      min: 1,
+      max: 12,
+      defaultValue: 4,
+    }
   },
 }
 
