@@ -8,16 +8,15 @@ const Label = styled(StyledLabel)`
   line-height: 1.31;
   margin-bottom: 15px;
 `
-const BoxInputRangeAndDatalist = styled.div`
+const BoxInputRangeAndRulerValues = styled.div`
   & #inputRangeInvestmentPeriod:focus {
     outline: none;
   }
 `
 
 const RulerValues = styled.div`
-   display: flex;
+  display: flex;
   width: 100%;
-
   justify-content: space-between;
   margin: 10px 0 0;3
 `
@@ -52,7 +51,7 @@ function InputInvestmentPeriod() {
     <BoxSectionForm id='componentInputInvestmentPeriod'>
       <Label htmlFor='inputRangeInvestmentPeriod'>Срок инвестиций ( Месяцев )</Label>
 
-      <BoxInputRangeAndDatalist id='boxInputRangeAndDatalist'>
+      <BoxInputRangeAndRulerValues id='boxInputRangeAndDatalist'>
         <InputRange
           settings={{
             defaultValue: theme.elements.inputRange.settings.defaultValue,
@@ -67,7 +66,7 @@ function InputInvestmentPeriod() {
             <Span key={id}>{item}</Span>
           ))}
         </RulerValues>
-      </BoxInputRangeAndDatalist>
+      </BoxInputRangeAndRulerValues>
     </BoxSectionForm>
   )
 }
