@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components'
 import Header from '../../Header/Header'
 import ButtonChangeTheme from '../../ButtonChangeTheme/ButtonChangeTheme'
 import Main from '../../Main/Main'
+import { CurrentSizeScreenContext } from '../../../contexts/contexts'
 
 const CommonBox = styled.div`
   position: relative;
+  background: ${(props) => props.$bg};
 
   @media (min-width: 960px) {
     height: 100vh;
@@ -66,21 +68,22 @@ const HeaderBox = styled.div`
 `
 
 function MajorPage() {
-  const refCommonBox = useRef(null)
-  const theme = useTheme()
-
+  const [bgCommonBox, setBgCommonBox] = useState()
   const [geometryBoxListGeneralCalculation, setGeometryBoxListGeneralCalculation] = useState(null)
 
+  const theme = useTheme()
+  const currentSizeScreen = useContext(CurrentSizeScreenContext)
+
   useEffect(() => {
-    if (window.innerWidth >= 960 && refCommonBox.current !== null && geometryBoxListGeneralCalculation) {
-      refCommonBox.current.style.background = theme.getParamsBackground(geometryBoxListGeneralCalculation.x)
-    } else if (window.innerWidth < 960) {
-      refCommonBox.current.style.background = theme.palette.bg.primary
+    if (currentSizeScreen.width >= theme.breakpoints.l && geometryBoxListGeneralCalculation) {
+      setBgCommonBox(theme.getParamsBackground(geometryBoxListGeneralCalculation.x))
+    } else if (currentSizeScreen.width < theme.breakpoints.l) {
+      setBgCommonBox(theme.palette.bg.primary)
     }
-  }, [refCommonBox, geometryBoxListGeneralCalculation, theme])
+  }, [currentSizeScreen.width, geometryBoxListGeneralCalculation, theme])
 
   return (
-    <CommonBox ref={refCommonBox}>
+    <CommonBox $bg={bgCommonBox}>
       <Box>
         <ContentBox>
           <HeaderBox id='boxHeader'>
