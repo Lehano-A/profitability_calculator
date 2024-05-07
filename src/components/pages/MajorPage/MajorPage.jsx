@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import styled, { useTheme } from 'styled-components'
-import Header from '../../../Header/Header'
-import ButtonChangeTheme from '../../../ButtonChangeTheme/ButtonChangeTheme'
-import Main from '../../../Main/Main'
+import Header from '../../Header/Header'
+import ButtonChangeTheme from '../../ButtonChangeTheme/ButtonChangeTheme'
+import Main from '../../Main/Main'
 
 const CommonBox = styled.div`
   position: relative;

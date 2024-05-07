@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
+import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import arrowSelect from '../../../images/icons/arrowSelect.svg'
 import StyledInput from '../../styled/StyledInput'
 import StyledLabel from '../../styled/StyledLabel'

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
+import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledLabel from '../../styled/StyledLabel'
 import StyledInputCalendar from '../../styled/StyledInputCalendar'
 

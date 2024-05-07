@@ -1,8 +1,8 @@
 import styled, { useTheme } from 'styled-components'
-import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
+import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledLabel from '../../styled/StyledLabel'
 
-import InputRange from '../../App/Common/Form/InputRange/InputRange'
+import InputRange from '../../common/Form/InputRange/InputRange'
 
 const Label = styled(StyledLabel)`
   line-height: 1.31;

@@ -1,4 +1,4 @@
-import MajorPage from './Pages/MajorPage/MajorPage'
+import MajorPage from '../pages/MajorPage/MajorPage'
 import GlobalStyle from '../../globalStyles'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../../theme/theme'

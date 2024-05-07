@@ -1,8 +1,8 @@
 import styled, { useTheme } from 'styled-components'
-import BoxSectionForm from '../../App/Common/Form/BoxSectionForm/BoxSectionForm'
+import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import StyledLabel from '../../styled/StyledLabel'
-import InputRange from '../../App/Common/Form/InputRange/InputRange'
+import InputRange from '../../common/Form/InputRange/InputRange'
 import { useContext, useState } from 'react'
 import { CurrentSizeScreenContext } from '../../../contexts/contexts'
 

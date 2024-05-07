@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import StyledInputRange from '../../../../styled/StyledInputRange'
+import StyledInputRange from '../../../styled/StyledInputRange'
 import { useState } from 'react'
 
 const StyledBoxInputRange = styled.div`
