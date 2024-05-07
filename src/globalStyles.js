@@ -21,17 +21,17 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  input:focus,
+  /* не увеличиваем специфичность для #inputRangeAmountInvestment, поэтому :where */
+  :where(input:not(#inputRangeInvestmentPeriod)):focus,
   select:focus,
-  #boxInputRangeAndDatalist:focus-within  {
-    border-color: transparent;
+  #boxInputRangeAndRulerValues:focus-within {
     border-radius: 9px;
     outline: ${(props) => props.theme.getParamsFocus()};
     outline-offset: -2px;
   }
 
-  input[type="range"]:focus,
-  #boxInputRangeAndDatalist:focus-within {
+  #inputRangeAmountInvestment:focus,
+  #boxInputRangeAndRulerValues:focus-within {
     outline-offset: 6px;
   }
 `

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import StyledInputRange from '../../../styled/StyledInputRange'
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 
 const StyledBoxInputRange = styled.div`
   position: relative;
@@ -34,7 +34,7 @@ const PseudoTrack = styled.div`
     `linear-gradient(90deg, ${props.theme.palette.inputRange.gradient.start} ${props.$xCoord}%, ${props.theme.palette.inputRange.gradient.end} 0)`};
 `
 
-function InputRange({ settings }) {
+const InputRange = forwardRef(function InputRange({ settings }, ref) {
   const { defaultValue = 50, min = 0, max = 100 } = settings || {}
 
   const [xCoord, setXCoord] = useState(((defaultValue - min) / (max - min)) * 100)
@@ -46,12 +46,16 @@ function InputRange({ settings }) {
     setXCoord(x)
   }
 
+  function handleOnFocus() {
+    ref.current.focus()
+  }
+
   return (
     <StyledBoxInputRange>
-      <InputRangeElement {...settings} onChange={handleOnChange} type='range' />
+      <InputRangeElement onFocus={handleOnFocus} ref={ref} {...settings} onChange={handleOnChange} type='range' />
       <PseudoTrack $xCoord={xCoord} defaultValue={defaultValue} min={min} max={max} />
     </StyledBoxInputRange>
   )
-}
+})
 
 export default InputRange

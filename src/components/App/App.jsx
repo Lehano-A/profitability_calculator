@@ -3,11 +3,12 @@ import GlobalStyle from '../../globalStyles'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../../theme/theme'
 import { useEffect, useState } from 'react'
-import { CurrentThemeContext, CurrentSizeScreenContext } from '../../contexts/contexts'
+import { CurrentThemeContext, CurrentSizeScreenContext, UserDeviceContext } from '../../contexts/contexts'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light')
   const [currentSizeScreen, setCurrentSizeScreen] = useState({ width: window.innerWidth })
+  const [userDevice, setUserDevice] = useState(navigator.userAgent)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -20,13 +21,23 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    if (/iPhone|iPad/i.test(navigator.userAgent)) {
+      setUserDevice('mobile')
+    } else {
+      setUserDevice('pc')
+    }
+  }, [])
+
   return (
     <CurrentThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <CurrentSizeScreenContext.Provider value={currentSizeScreen}>
-        <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-          <GlobalStyle />
-          <MajorPage />
-        </ThemeProvider>
+        <UserDeviceContext.Provider value={userDevice}>
+          <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+            <GlobalStyle />
+            <MajorPage />
+          </ThemeProvider>
+        </UserDeviceContext.Provider>
       </CurrentSizeScreenContext.Provider>
     </CurrentThemeContext.Provider>
   )

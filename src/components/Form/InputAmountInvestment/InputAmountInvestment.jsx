@@ -1,14 +1,10 @@
 import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
-import StyledLabel from '../../styled/StyledLabel'
 import InputRange from '../../common/Form/InputRange/InputRange'
-import { useContext, useState } from 'react'
+import { useState, useRef, useContext } from 'react'
+import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
 import { CurrentSizeScreenContext } from '../../../contexts/contexts'
-
-const Label = styled(StyledLabel)`
-  line-height: 1.31;
-`
 
 const BoxInputs = styled.div`
   display: flex;
@@ -89,10 +85,11 @@ const Unit = styled(StyledInput)`
 
 function InputAmountInvestment() {
   const [inputNumberValue, setInputNumberValue] = useState('10000')
+  const theme = useTheme()
 
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
 
-  const theme = useTheme()
+  const forwardRefInputRange = useRef(null)
 
   function handleOnChangeInputNumber(e) {
     if (e.target.value.length <= 5) {
@@ -102,16 +99,18 @@ function InputAmountInvestment() {
 
   return (
     <BoxSectionForm id='componentInputAmountInvestment'>
-      <Label
-        htmlFor={
-          currentSizeScreen.width >= theme.breakpoints.s ? 'inputRangeAmountInvestment' : 'inputNumberAmountInvestment'
+      <SpecialLabelInputRange
+        refInputRange={forwardRefInputRange}
+        idInputRange={
+          currentSizeScreen >= theme.breakpoints.s ? 'inputRangeAmountInvestment' : 'inputNumberAmountInvestment'
         }
       >
         Сумма инвестиций
-      </Label>
+      </SpecialLabelInputRange>
 
       <BoxInputs>
         <InputRange
+          ref={forwardRefInputRange}
           settings={{
             defaultValue: 10000,
             min: 0,

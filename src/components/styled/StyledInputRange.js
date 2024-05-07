@@ -6,6 +6,7 @@ const StyledInputRange = styled(StyledInput)`
   height: 38px;
   padding: 0;
   border: none;
+  outline: none;
   margin: 0;
   appearance: none;
 
@@ -26,7 +27,6 @@ const StyledInputRange = styled(StyledInput)`
     -moz-appearance: none;
     width: ${(props) => props.theme.elements.inputRange.thumb.width}px;
     height: ${(props) => props.theme.elements.inputRange.thumb.height}px;
-    border: none;
     border-radius: 3px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     background-color: ${(props) => props.theme.palette.inputRange.thumb.bg};

@@ -1,18 +1,10 @@
 import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
-import StyledLabel from '../../styled/StyledLabel'
-
 import InputRange from '../../common/Form/InputRange/InputRange'
+import { useEffect, useRef } from 'react'
+import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
 
-const Label = styled(StyledLabel)`
-  line-height: 1.31;
-  margin-bottom: 15px;
-`
-const BoxInputRangeAndRulerValues = styled.div`
-  & #inputRangeInvestmentPeriod:focus {
-    outline: none;
-  }
-`
+const BoxInputRangeAndRulerValues = styled.div``
 
 const RulerValues = styled.div`
   display: flex;
@@ -33,6 +25,13 @@ const Span = styled.span`
 
 function InputInvestmentPeriod() {
   const theme = useTheme()
+  const forwardRefInputRange = useRef(null)
+
+  useEffect(() => {
+    document.addEventListener('keyup', handleKeyUp)
+
+    return () => document.addEventListener('keyup', handleKeyUp)
+  }, [])
 
   function createValuesForRuler() {
     const min = theme.elements.inputRange.settings.min
@@ -47,12 +46,21 @@ function InputInvestmentPeriod() {
     return box
   }
 
+  function handleKeyUp(e) {
+    if (e.code === 'Tab' && e.target.id === 'boxInputRangeAndRulerValues' && forwardRefInputRange.current !== null) {
+      forwardRefInputRange.current.focus() // если с помощью Tab попадаем на родителя-обёртку InputRange, то переводим фокус на inputRange (для iOS)
+    }
+  }
+
   return (
     <BoxSectionForm id='componentInputInvestmentPeriod'>
-      <Label htmlFor='inputRangeInvestmentPeriod'>Срок инвестиций ( Месяцев )</Label>
+      <SpecialLabelInputRange refInputRange={forwardRefInputRange} idInputRange='inputRangeInvestmentPeriod'>
+        Срок инвестиций ( Месяцев )
+      </SpecialLabelInputRange>
 
-      <BoxInputRangeAndRulerValues id='boxInputRangeAndDatalist'>
+      <BoxInputRangeAndRulerValues tabIndex='0' id='boxInputRangeAndRulerValues'>
         <InputRange
+          ref={forwardRefInputRange}
           settings={{
             defaultValue: theme.elements.inputRange.settings.defaultValue,
             min: theme.elements.inputRange.settings.min,
