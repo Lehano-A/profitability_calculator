@@ -101,7 +101,10 @@ const lightTheme = {
         start: lightThemeColors.primary,
         end: lightThemeColors.shades.gray[200],
       },
-      option: lightThemeColors.secondary,
+      option: {
+        currentValue: lightThemeColors.tertiary,
+        otherValue: lightThemeColors.secondary,
+      },
     },
 
     inputDate: {
@@ -245,7 +248,10 @@ const darkTheme = {
         start: darkThemeColors.primary,
         end: darkThemeColors.secondary,
       },
-      option: darkThemeColors.tertiary,
+      option: {
+        currentValue: darkThemeColors.secondary,
+        otherValue: darkThemeColors.tertiary,
+      },
     },
 
     buttonSubmit: {

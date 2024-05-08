@@ -34,7 +34,7 @@ const PseudoTrack = styled.div`
     `linear-gradient(90deg, ${props.theme.palette.inputRange.gradient.start} ${props.$xCoord}%, ${props.theme.palette.inputRange.gradient.end} 0)`};
 `
 
-const InputRange = forwardRef(function InputRange({ settings }, ref) {
+const InputRange = forwardRef(function InputRange({ settings, setCurrentValue }, ref) {
   const { defaultValue = 50, min = 0, max = 100 } = settings || {}
 
   const [xCoord, setXCoord] = useState(((defaultValue - min) / (max - min)) * 100)
@@ -44,6 +44,8 @@ const InputRange = forwardRef(function InputRange({ settings }, ref) {
 
     const x = ((value - min) / (max - min)) * 100
     setXCoord(x)
+
+    setCurrentValue && setCurrentValue(e.target.value)
   }
 
   function handleOnFocus() {
