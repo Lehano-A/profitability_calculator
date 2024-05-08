@@ -8,9 +8,9 @@ import { CurrentSizeScreenContext } from '../../../contexts/contexts'
 const CommonBox = styled.div`
   position: relative;
   background: ${(props) => props.$bg};
+  height: 100vh;
 
   @media (min-width: 960px) {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -21,6 +21,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   position: relative;
 
   & #boxHeader,
@@ -42,12 +43,12 @@ const Box = styled.div`
 
   @media (min-width: 960px) {
     flex-direction: row;
-
     justify-content: center;
   }
 `
 
 const ContentBox = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -57,7 +58,11 @@ const ContentBox = styled.div`
   }
 
   @media (min-width: 960px) {
-    padding: 160px 0 0 20px;
+    padding: 90px 0 0 20px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 160px 0 0 30px;
   }
 `
 

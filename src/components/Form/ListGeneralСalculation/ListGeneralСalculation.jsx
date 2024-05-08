@@ -8,11 +8,15 @@ const BoxList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
   line-height: 1.31;
+
+  @media (min-width: 320px) {
+    width: 100%;
+  }
 
   @media (min-width: 960px) {
     width: 100%;
+    justify-content: end;
   }
 `
 

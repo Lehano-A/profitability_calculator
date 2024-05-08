@@ -6,8 +6,10 @@ import ListGeneralСalculation from '../Form/ListGeneralСalculation/ListGeneral
 const MainBox = styled.main`
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media (min-width: 960px) {
+    height: auto;
     flex-direction: row;
     justify-content: center;
   }
@@ -16,6 +18,7 @@ const MainBox = styled.main`
 const BoxListGeneralCalculation = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media (min-width: 320px) {
     width: 100%;
