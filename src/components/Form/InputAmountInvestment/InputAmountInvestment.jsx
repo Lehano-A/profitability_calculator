@@ -102,7 +102,7 @@ function InputAmountInvestment() {
       <SpecialLabelInputRange
         refInputRange={forwardRefInputRange}
         idInputRange={
-          currentSizeScreen >= theme.breakpoints.s ? 'inputRangeAmountInvestment' : 'inputNumberAmountInvestment'
+          currentSizeScreen.width >= theme.breakpoints.s ? 'inputRangeAmountInvestment' : 'inputNumberAmountInvestment'
         }
       >
         Сумма инвестиций
