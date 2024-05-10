@@ -63,10 +63,6 @@ const lightTheme = {
     bg: {
       primary: lightThemeColors.basics.white,
       secondary: lightThemeColors.shades.gray[100],
-      gradient: {
-        start: lightThemeColors.basics.white,
-        end: lightThemeColors.shades.gray[100],
-      },
     },
 
     label: {
@@ -207,10 +203,6 @@ const darkTheme = {
     bg: {
       primary: darkThemeColors.shades.gray[600],
       secondary: darkThemeColors.shades.gray[800],
-      gradient: {
-        start: darkThemeColors.shades.gray[600],
-        end: darkThemeColors.shades.gray[800],
-      },
     },
 
     label: {
@@ -324,7 +316,7 @@ function getParamsFocus(elementType = 'input', inputColor) {
 }
 
 function getParamsBackground(xCoord) {
-  return `linear-gradient(90deg, ${this.palette.bg.gradient.start} ${xCoord}px, ${this.palette.bg.gradient.end} 0)`
+  return `linear-gradient(90deg, transparent ${xCoord}px, ${this.palette.bg.secondary} 0)`
 }
 
 function getParamsHistogramBackground() {

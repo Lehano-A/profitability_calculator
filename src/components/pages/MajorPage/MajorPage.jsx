@@ -6,44 +6,16 @@ import Main from '../../Main/Main'
 import { CurrentSizeScreenContext } from '../../../contexts/contexts'
 
 const CommonBox = styled.div`
-  position: relative;
   background: ${(props) => props.$bg};
-  height: 100vh;
+
+  @media (min-width: 640px) {
+    height: 100%;
+  }
 
   @media (min-width: 960px) {
     display: flex;
     justify-content: center;
     align-items: start;
-  }
-`
-
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  & #boxHeader,
-  & #formCalculatingProfitability {
-    @media (min-width: 320px) {
-      padding: 0px 20px 0;
-    }
-
-    @media (min-width: 960px) {
-      padding: 0 20px 0 0;
-    }
-  }
-
-  & #formCalculatingProfitability {
-    @media (min-width: 1200px) {
-      padding: 0 50px 0 0px;
-    }
-  }
-
-  @media (min-width: 960px) {
-    flex-direction: row;
-    justify-content: center;
   }
 `
 
@@ -53,16 +25,33 @@ const ContentBox = styled.div`
   flex-direction: column;
   position: relative;
 
+  & #boxHeader,
+  & #formCalculatingProfitability {
+    @media (min-width: 320px) {
+      padding: 0px 20px 0;
+    }
+
+    @media (min-width: 960px) {
+      padding: 0 20px;
+    }
+  }
+  & #boxHeader,
+  & #formCalculatingProfitability {
+    @media (min-width: 1200px) {
+      padding: 0 50px 0 0px;
+    }
+  }
+
   @media (min-width: 320px) {
     padding-top: 60px;
   }
 
   @media (min-width: 960px) {
-    padding: 90px 0 0 20px;
+    padding: 90px 0 0;
   }
 
   @media (min-width: 1200px) {
-    padding: 160px 0 0 30px;
+    padding: 160px 0 0;
   }
 `
 
@@ -89,16 +78,14 @@ function MajorPage() {
 
   return (
     <CommonBox $bg={bgCommonBox}>
-      <Box>
-        <ContentBox>
-          <HeaderBox id='boxHeader'>
-            <ButtonChangeTheme />
-            <Header />
-          </HeaderBox>
+      <ContentBox>
+        <HeaderBox id='boxHeader'>
+          <ButtonChangeTheme />
+          <Header />
+        </HeaderBox>
 
-          <Main setGeometryBoxListGeneralCalculation={setGeometryBoxListGeneralCalculation} />
-        </ContentBox>
-      </Box>
+        <Main setGeometryBoxListGeneralCalculation={setGeometryBoxListGeneralCalculation} />
+      </ContentBox>
     </CommonBox>
   )
 }

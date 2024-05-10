@@ -38,6 +38,7 @@ const BoxListGeneralCalculation = styled.div`
     background: none;
     width: 320px;
     padding: 0 20px;
+    align-self: end;
   }
 
   @media (min-width: 1200px) {

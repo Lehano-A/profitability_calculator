@@ -8,17 +8,23 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
    font-size: 62.5%;
+   height: 100%;
   }
 
   body {
+    background: ${(props) => props.theme.palette.bg.primary};
     display: flex;
     flex-direction: column;
     font-size: 1.4rem;
     margin: 0;
-    background-color: ${(props) => props.theme.palette.mainBackground};
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+  }
+
+  #root {
+    height: 100%;
   }
 
   /* не увеличиваем специфичность для #inputRangeAmountInvestment, поэтому :where */
