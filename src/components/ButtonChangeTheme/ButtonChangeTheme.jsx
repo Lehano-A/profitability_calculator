@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { CurrentThemeContext } from '../../contexts/contexts'
 
@@ -52,16 +52,28 @@ const Thumb = styled.div((props) => {
 
 function ButtonChangeTheme() {
   const [animationForChangeTheme, setAnimationForChangeTheme] = useState('none')
+  const [timeoutClick, setTimeoutClick] = useState(null)
   const ContextCurrentTheme = useContext(CurrentThemeContext)
   const { currentTheme, setCurrentTheme } = ContextCurrentTheme
 
+  useEffect(() => {
+    if (timeoutClick) {
+      setTimeout(() => {
+        setTimeoutClick()
+      }, 500)
+    }
+  }, [timeoutClick])
+
   function handleOnClick() {
-    if (currentTheme === 'light') {
-      setCurrentTheme('dark')
-      setAnimationForChangeTheme('from-left-to-right 0.5s ease-out forwards')
-    } else {
-      setCurrentTheme('light')
-      setAnimationForChangeTheme('from-right-to-left 0.5s ease-out forwards')
+    if (!timeoutClick) {
+      setTimeoutClick(true)
+      if (currentTheme === 'light') {
+        setCurrentTheme('dark')
+        setAnimationForChangeTheme('from-left-to-right 0.5s ease-out forwards')
+      } else {
+        setCurrentTheme('light')
+        setAnimationForChangeTheme('from-right-to-left 0.5s ease-out forwards')
+      }
     }
   }
 
