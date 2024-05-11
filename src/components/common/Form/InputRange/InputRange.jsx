@@ -34,7 +34,7 @@ const PseudoTrack = styled.div`
     `linear-gradient(90deg, ${props.theme.palette.inputRange.gradient.start} ${props.$xCoord}%, ${props.theme.palette.inputRange.gradient.end} 0)`};
 `
 
-const InputRange = forwardRef(function InputRange({ settings, setCurrentValue }, ref) {
+const InputRange = forwardRef(function InputRange({ settings, setCurrentValue, required = false }, ref) {
   const { defaultValue = 50, min = 0, max = 100 } = settings || {}
 
   const [xCoord, setXCoord] = useState(((defaultValue - min) / (max - min)) * 100)
@@ -54,7 +54,15 @@ const InputRange = forwardRef(function InputRange({ settings, setCurrentValue },
 
   return (
     <StyledBoxInputRange>
-      <InputRangeElement onFocus={handleOnFocus} ref={ref} {...settings} onChange={handleOnChange} type='range' />
+      <InputRangeElement
+        onFocus={handleOnFocus}
+        ref={ref}
+        {...settings}
+        onChange={handleOnChange}
+        type='range'
+        required={required}
+      />
+
       <PseudoTrack $xCoord={xCoord} defaultValue={defaultValue} min={min} max={max} />
     </StyledBoxInputRange>
   )

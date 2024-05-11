@@ -73,6 +73,7 @@ function InputInvestmentPeriod() {
             max: theme.elements.inputRange.settings.max,
             id: 'inputRangeInvestmentPeriod',
           }}
+          required
         />
 
         <RulerValues>

@@ -127,6 +127,7 @@ function InputAmountInvestment() {
             id='inputNumberAmountInvestment'
             type='number'
             max='100000'
+            required
           />
 
           <Unit as='span'>BTC</Unit>

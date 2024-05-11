@@ -55,7 +55,7 @@ function InputTypeDeposit() {
       <Label htmlFor='typeDeposit'>Тип депозита</Label>
 
       <BoxSelectAndIcon>
-        <Select as='select' id='typeDeposit'>
+        <Select as='select' id='typeDeposit' required>
           <option>Standart</option>
         </Select>
 

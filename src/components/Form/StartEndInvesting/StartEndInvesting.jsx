@@ -51,14 +51,14 @@ function StartEndInvesting() {
         <Label htmlFor='inputDateStartInvesting' id='labelStartInvesting'>
           Старт инвестиции
         </Label>
-        <StartInvesting id='inputDateStartInvesting' type='date' pattern='\d{2}-\d{2}-\d{4}' />
+        <StartInvesting id='inputDateStartInvesting' type='date' pattern='\d{2}-\d{2}-\d{4}' required />
       </BoxSectionForm>
 
       <BoxSectionForm>
         <Label htmlFor='inputDateEndInvesting' id='labelEndInvesting'>
           Завершение инвестиции
         </Label>
-        <EndInvesting id='inputDateEndInvesting' type='date' />
+        <EndInvesting id='inputDateEndInvesting' type='date' required />
       </BoxSectionForm>
     </Box>
   )

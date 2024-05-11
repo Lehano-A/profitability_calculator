@@ -49,7 +49,14 @@ function MonetaryUnit() {
     <Fieldset id='componentMonetaryUnit'>
       {namesUnits.map((name, id) => (
         <Label key={id} htmlFor={name}>
-          <Radio defaultChecked={name === 'BTC' && true} type='radio' name='monetaryUnit' id={name} value={name} />
+          <Radio
+            defaultChecked={name === 'BTC' && true}
+            type='radio'
+            name='monetaryUnit'
+            id={name}
+            value={name}
+            required
+          />
           {name}
         </Label>
       ))}
