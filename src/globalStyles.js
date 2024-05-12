@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    height: 100%;
     background: ${(props) => props.theme.palette.bg.primary};
     display: flex;
     flex-direction: column;
@@ -20,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 100%;
   }
 
   #root {

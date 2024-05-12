@@ -1,6 +1,6 @@
 import MajorPage from '../pages/MajorPage/MajorPage'
 import GlobalStyle from '../../globalStyles'
-import { ThemeProvider, useTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../../theme/theme'
 import { useEffect, useState } from 'react'
 import { CurrentThemeContext, CurrentSizeScreenContext, UserDeviceContext } from '../../contexts/contexts'

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 const Button = styled.button`
   border-radius: 0 90px;
   border: none;
-
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.17;

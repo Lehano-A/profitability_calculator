@@ -4,9 +4,9 @@ import Form from '../Form/Form/Form'
 import ListGeneralСalculation from '../Form/ListGeneralСalculation/ListGeneralСalculation'
 
 const MainBox = styled.main`
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
 
   @media (min-width: 960px) {
     height: auto;
@@ -18,7 +18,7 @@ const MainBox = styled.main`
 const BoxListGeneralCalculation = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex-grow: 1;
 
   @media (min-width: 320px) {
     width: 100%;
@@ -38,7 +38,7 @@ const BoxListGeneralCalculation = styled.div`
     background: none;
     width: 320px;
     padding: 0 20px;
-    align-self: end;
+    justify-content: end;
   }
 
   @media (min-width: 1200px) {

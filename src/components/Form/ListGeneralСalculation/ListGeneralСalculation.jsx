@@ -4,9 +4,9 @@ import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
 
 const BoxList = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   line-height: 1.31;
 

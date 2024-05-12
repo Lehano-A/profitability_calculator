@@ -70,9 +70,11 @@ function MajorPage() {
 
   useEffect(() => {
     if (currentSizeScreen.width >= theme.breakpoints.l && geometryBoxListGeneralCalculation) {
-      setBgCommonBox(theme.getParamsBackground(geometryBoxListGeneralCalculation.x))
-    } else if (currentSizeScreen.width < theme.breakpoints.l) {
-      setBgCommonBox(theme.palette.bg.primary)
+      if (currentSizeScreen.width >= theme.breakpoints.l) {
+        setBgCommonBox(theme.getParamsBackground(geometryBoxListGeneralCalculation.x))
+      } else if (currentSizeScreen.width < theme.breakpoints.l) {
+        setBgCommonBox(theme.palette.bg.primary)
+      }
     }
   }, [currentSizeScreen.width, geometryBoxListGeneralCalculation, theme])
 
