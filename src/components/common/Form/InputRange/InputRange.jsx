@@ -38,9 +38,9 @@ const InputRange = forwardRef(function InputRange(
   { settings, setCurrentValue, setInputNumberValue, required = false },
   ref,
 ) {
-  const { defaultValue = 50, min = 0, max = 100, value } = settings || {}
+  const { value, min = 0, max = 100 } = settings || {}
 
-  const [xCoord, setXCoord] = useState(getXCoord(defaultValue))
+  const [xCoord, setXCoord] = useState(getXCoord(value))
 
   useEffect(() => {
     value === '' ? setXCoord(0) : setXCoord(getXCoord(value))
@@ -74,7 +74,7 @@ const InputRange = forwardRef(function InputRange(
         required={required}
       />
 
-      <PseudoTrack $xCoord={xCoord} defaultValue={defaultValue} min={min} max={max} />
+      <PseudoTrack $xCoord={xCoord} defaultValue={value} min={min} max={max} />
     </StyledBoxInputRange>
   )
 })

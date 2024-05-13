@@ -68,7 +68,7 @@ function InputInvestmentPeriod() {
           setCurrentValue={setCurrentRulerValue}
           ref={forwardRefInputRange}
           settings={{
-            defaultValue: theme.elements.inputRange.settings.defaultValue,
+            value: currentRulerValue,
             min: theme.elements.inputRange.settings.min,
             max: theme.elements.inputRange.settings.max,
             id: 'inputRangeInvestmentPeriod',
