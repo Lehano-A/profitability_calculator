@@ -84,7 +84,7 @@ const Unit = styled(StyledInput)`
 `
 
 function InputAmountInvestment() {
-  const [inputNumberValue, setInputNumberValue] = useState('10000')
+  const [inputNumberValue, setInputNumberValue] = useState(10000)
   const theme = useTheme()
 
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
@@ -93,7 +93,15 @@ function InputAmountInvestment() {
 
   function handleOnChangeInputNumber(e) {
     if (e.target.value.length <= 5) {
-      setInputNumberValue(e.target.value)
+      const currentValue = e.target.value
+
+      if (currentValue.length === 2 && currentValue.startsWith(0)) {
+        // если значение начинается с 0 и введён второй символ
+        setInputNumberValue(currentValue.substring(1)) // присваиваем второй символ
+        return
+      }
+
+      setInputNumberValue(currentValue === '' ? 0 : currentValue)
     }
   }
 
@@ -110,23 +118,22 @@ function InputAmountInvestment() {
 
       <BoxInputs>
         <InputRange
+          setInputNumberValue={setInputNumberValue}
           ref={forwardRefInputRange}
           settings={{
-            defaultValue: 10000,
+            value: inputNumberValue,
             min: 0,
-            max: 50000,
-            step: 100,
+            max: 99999,
             id: 'inputRangeAmountInvestment',
           }}
         />
 
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
           <InputNumber
-            value={inputNumberValue}
+            value={inputNumberValue === 0 ? '' : inputNumberValue}
             onChange={handleOnChangeInputNumber}
             id='inputNumberAmountInvestment'
             type='number'
-            max='100000'
             required
           />
 

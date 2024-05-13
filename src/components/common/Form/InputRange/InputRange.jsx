@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import StyledInputRange from '../../../styled/StyledInputRange'
-import { forwardRef, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 
 const StyledBoxInputRange = styled.div`
   position: relative;
@@ -34,22 +34,33 @@ const PseudoTrack = styled.div`
     `linear-gradient(90deg, ${props.theme.palette.inputRange.gradient.start} ${props.$xCoord}%, ${props.theme.palette.inputRange.gradient.end} 0)`};
 `
 
-const InputRange = forwardRef(function InputRange({ settings, setCurrentValue, required = false }, ref) {
-  const { defaultValue = 50, min = 0, max = 100 } = settings || {}
+const InputRange = forwardRef(function InputRange(
+  { settings, setCurrentValue, setInputNumberValue, required = false },
+  ref,
+) {
+  const { defaultValue = 50, min = 0, max = 100, value } = settings || {}
 
-  const [xCoord, setXCoord] = useState(((defaultValue - min) / (max - min)) * 100)
+  const [xCoord, setXCoord] = useState(getXCoord(defaultValue))
+
+  useEffect(() => {
+    value === '' ? setXCoord(0) : setXCoord(getXCoord(value))
+  }, [value])
 
   function handleOnChange(e) {
     const { value } = e.target
 
-    const x = ((value - min) / (max - min)) * 100
-    setXCoord(x)
+    setXCoord(getXCoord(value))
 
     setCurrentValue && setCurrentValue(e.target.value)
+    setInputNumberValue && setInputNumberValue(e.target.value)
   }
 
   function handleOnFocus() {
     ref.current.focus()
+  }
+
+  function getXCoord(currentValue) {
+    return ((currentValue - min) / (max - min)) * 100
   }
 
   return (
