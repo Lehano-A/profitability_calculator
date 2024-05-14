@@ -1,8 +1,9 @@
 import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import InputRange from '../../common/Form/InputRange/InputRange'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
+import { InputInvestmentPeriodContext } from '../../../contexts/contexts'
 
 const BoxInputRangeAndRulerValues = styled.div``
 
@@ -29,6 +30,7 @@ const Span = styled.span`
 function InputInvestmentPeriod() {
   const theme = useTheme()
   const forwardRefInputRange = useRef(null)
+  const { setValueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
 
   const [currentRulerValue, setCurrentRulerValue] = useState(theme.elements.inputRange.settings.defaultValue)
 
@@ -37,6 +39,10 @@ function InputInvestmentPeriod() {
 
     return () => document.addEventListener('keyup', handleKeyUp)
   }, [])
+
+  useEffect(() => {
+    setValueFromInputRangeInvestmentPeriod(currentRulerValue)
+  }, [currentRulerValue])
 
   function createValuesForRuler() {
     const min = theme.elements.inputRange.settings.min

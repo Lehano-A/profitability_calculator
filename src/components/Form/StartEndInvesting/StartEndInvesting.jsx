@@ -1,7 +1,10 @@
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledLabel from '../../styled/StyledLabel'
 import StyledInputCalendar from '../../styled/StyledInputCalendar'
+import { useContext, useEffect, useState } from 'react'
+import { InputInvestmentPeriodContext } from '../../../contexts/contexts'
+import useDate from '../../../hooks/useDate'
 
 const Box = styled.div`
   display: flex;
@@ -45,20 +48,59 @@ const StartInvesting = styled(StyledInputCalendar)``
 const EndInvesting = styled(StyledInputCalendar)``
 
 function StartEndInvesting() {
+  const theme = useTheme()
+
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState('')
+  const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
+
+  const { getCurrentYearMonthDay, getEndPeriod } = useDate()
+  const currentDate = getCurrentYearMonthDay()
+
+  useEffect(() => {
+    changeEndPeriod()
+  }, [startDate, valueFromInputRangeInvestmentPeriod]) // при изменении пользователем начальной даты или значения ползунка
+
+  function changeEndPeriod() {
+    if (valueFromInputRangeInvestmentPeriod === null) {
+      // по дефолту
+      setEndDate(getEndPeriod(startDate, theme.elements.inputRange.settings.defaultValue))
+    } else {
+      const endPeriod = getEndPeriod(startDate, valueFromInputRangeInvestmentPeriod)
+
+      if (endPeriod.length === 10) {
+        setEndDate(endPeriod)
+      }
+    }
+  }
+
+  function handleOnChangeStartEnvesting(e) {
+    setStartDate(new Date(e.target.value))
+  }
+
   return (
     <Box id='componentStartEndInvesting'>
       <BoxSectionForm>
         <Label htmlFor='inputDateStartInvesting' id='labelStartInvesting'>
           Старт инвестиции
         </Label>
-        <StartInvesting id='inputDateStartInvesting' type='date' pattern='\d{2}-\d{2}-\d{4}' required />
+        <StartInvesting
+          onInput={handleOnChangeStartEnvesting}
+          defaultValue={currentDate}
+          min={currentDate}
+          max='2050-01-01'
+          id='inputDateStartInvesting'
+          type='date'
+          pattern='\d{2}-\d{2}-\d{4}'
+          required
+        />
       </BoxSectionForm>
 
       <BoxSectionForm>
         <Label htmlFor='inputDateEndInvesting' id='labelEndInvesting'>
           Завершение инвестиции
         </Label>
-        <EndInvesting id='inputDateEndInvesting' type='date' required />
+        <EndInvesting disabled readOnly value={endDate} max={endDate} id='inputDateEndInvesting' type='date' required />
       </BoxSectionForm>
     </Box>
   )

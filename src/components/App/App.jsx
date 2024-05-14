@@ -3,12 +3,18 @@ import GlobalStyle from '../../globalStyles'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../../theme/theme'
 import { useEffect, useState } from 'react'
-import { CurrentThemeContext, CurrentSizeScreenContext, UserDeviceContext } from '../../contexts/contexts'
+import {
+  CurrentThemeContext,
+  CurrentSizeScreenContext,
+  UserDeviceContext,
+  InputInvestmentPeriodContext,
+} from '../../contexts/contexts'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light')
   const [currentSizeScreen, setCurrentSizeScreen] = useState({ width: window.innerWidth })
   const [userDevice, setUserDevice] = useState(navigator.userAgent)
+  const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState(null)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -33,10 +39,14 @@ function App() {
     <CurrentThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <CurrentSizeScreenContext.Provider value={currentSizeScreen}>
         <UserDeviceContext.Provider value={userDevice}>
-          <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-            <GlobalStyle />
-            <MajorPage />
-          </ThemeProvider>
+          <InputInvestmentPeriodContext.Provider
+            value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
+          >
+            <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+              <GlobalStyle />
+              <MajorPage />
+            </ThemeProvider>
+          </InputInvestmentPeriodContext.Provider>
         </UserDeviceContext.Provider>
       </CurrentSizeScreenContext.Provider>
     </CurrentThemeContext.Provider>
