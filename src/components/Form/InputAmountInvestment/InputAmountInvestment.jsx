@@ -2,9 +2,9 @@ import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import InputRange from '../../common/Form/InputRange/InputRange'
-import { useState, useRef, useContext } from 'react'
+import { useRef, useContext } from 'react'
 import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
-import { CurrentSizeScreenContext, InputAmountInvestmentContext } from '../../../contexts/contexts'
+import { CurrentSizeScreenContext, InputAmountInvestmentContext, MonetaryUnitContext } from '../../../contexts/contexts'
 
 const BoxInputs = styled.div`
   display: flex;
@@ -84,10 +84,10 @@ const Unit = styled(StyledInput)`
 `
 
 function InputAmountInvestment() {
-
   const theme = useTheme()
 
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
+  const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
   const { amountInvestment, setAmountInvestment } = useContext(InputAmountInvestmentContext)
 
   const forwardRefInputRange = useRef(null)
@@ -138,7 +138,7 @@ function InputAmountInvestment() {
             required
           />
 
-          <Unit as='span'>BTC</Unit>
+          <Unit as='span'>{currentMonetaryUnit}</Unit>
         </BoxInputNumberAndUnit>
       </BoxInputs>
     </BoxSectionForm>

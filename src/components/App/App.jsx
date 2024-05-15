@@ -7,6 +7,7 @@ import {
   CurrentThemeContext,
   CurrentSizeScreenContext,
   UserDeviceContext,
+  MonetaryUnitContext,
   InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
 } from '../../contexts/contexts'
@@ -16,6 +17,7 @@ function App() {
   const [currentSizeScreen, setCurrentSizeScreen] = useState({ width: window.innerWidth })
   const [userDevice, setUserDevice] = useState(navigator.userAgent)
   const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState(null)
+  const [currentMonetaryUnit, setCurrentMonetaryUnit] = useState('BTC')
   const [amountInvestment, setAmountInvestment] = useState(10000)
 
   useEffect(() => {
@@ -41,16 +43,18 @@ function App() {
     <CurrentThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <CurrentSizeScreenContext.Provider value={currentSizeScreen}>
         <UserDeviceContext.Provider value={userDevice}>
-          <InputInvestmentPeriodContext.Provider
-            value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
-          >
+          <MonetaryUnitContext.Provider value={{ currentMonetaryUnit, setCurrentMonetaryUnit }}>
             <InputAmountInvestmentContext.Provider value={{ amountInvestment, setAmountInvestment }}>
-              <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-                <GlobalStyle />
-                <MajorPage />
-              </ThemeProvider>
+              <InputInvestmentPeriodContext.Provider
+                value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
+              >
+                <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+                  <GlobalStyle />
+                  <MajorPage />
+                </ThemeProvider>
+              </InputInvestmentPeriodContext.Provider>
             </InputAmountInvestmentContext.Provider>
-          </InputInvestmentPeriodContext.Provider>
+          </MonetaryUnitContext.Provider>
         </UserDeviceContext.Provider>
       </CurrentSizeScreenContext.Provider>
     </CurrentThemeContext.Provider>

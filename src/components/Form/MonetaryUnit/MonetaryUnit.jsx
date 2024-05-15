@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { MonetaryUnitContext } from '../../../contexts/contexts'
 
 const Fieldset = styled.fieldset`
   display: flex;
@@ -44,18 +46,23 @@ const Label = styled.label`
 
 function MonetaryUnit() {
   const namesUnits = ['BTC', 'UAH', 'RUB', 'EUR', 'USD']
+  const { currentMonetaryUnit, setCurrentMonetaryUnit } = useContext(MonetaryUnitContext)
 
+  function handleOnChangeMonetaryUnit(e) {
+    setCurrentMonetaryUnit(e.target.id)
+  }
   return (
     <Fieldset id='componentMonetaryUnit'>
       {namesUnits.map((name, id) => (
         <Label key={id} htmlFor={name}>
           <Radio
-            defaultChecked={name === 'BTC' && true}
+            defaultChecked={name === currentMonetaryUnit && true}
             type='radio'
             name='monetaryUnit'
             id={name}
-            value={name}
+            value={currentMonetaryUnit}
             required
+            onChange={handleOnChangeMonetaryUnit}
           />
           {name}
         </Label>
