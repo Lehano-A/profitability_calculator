@@ -8,6 +8,7 @@ import {
   CurrentSizeScreenContext,
   UserDeviceContext,
   MonetaryUnitContext,
+  CalculationInterestRateContext,
   InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
 } from '../../contexts/contexts'
@@ -18,6 +19,7 @@ function App() {
   const [userDevice, setUserDevice] = useState(navigator.userAgent)
   const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState(null)
   const [currentMonetaryUnit, setCurrentMonetaryUnit] = useState('BTC')
+  const [currentAnnualInterestRate, setCurrentAnnualInterestRate] = useState('')
   const [amountInvestment, setAmountInvestment] = useState(10000)
 
   useEffect(() => {
@@ -44,16 +46,20 @@ function App() {
       <CurrentSizeScreenContext.Provider value={currentSizeScreen}>
         <UserDeviceContext.Provider value={userDevice}>
           <MonetaryUnitContext.Provider value={{ currentMonetaryUnit, setCurrentMonetaryUnit }}>
-            <InputAmountInvestmentContext.Provider value={{ amountInvestment, setAmountInvestment }}>
-              <InputInvestmentPeriodContext.Provider
-                value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
-              >
-                <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-                  <GlobalStyle />
-                  <MajorPage />
-                </ThemeProvider>
-              </InputInvestmentPeriodContext.Provider>
-            </InputAmountInvestmentContext.Provider>
+            <CalculationInterestRateContext.Provider
+              value={{ currentAnnualInterestRate, setCurrentAnnualInterestRate }}
+            >
+              <InputAmountInvestmentContext.Provider value={{ amountInvestment, setAmountInvestment }}>
+                <InputInvestmentPeriodContext.Provider
+                  value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
+                >
+                  <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+                    <GlobalStyle />
+                    <MajorPage />
+                  </ThemeProvider>
+                </InputInvestmentPeriodContext.Provider>
+              </InputAmountInvestmentContext.Provider>
+            </CalculationInterestRateContext.Provider>
           </MonetaryUnitContext.Provider>
         </UserDeviceContext.Provider>
       </CurrentSizeScreenContext.Provider>

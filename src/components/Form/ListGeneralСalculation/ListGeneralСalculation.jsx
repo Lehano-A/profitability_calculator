@@ -2,8 +2,13 @@ import styled from 'styled-components'
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
-import { useContext } from 'react'
-import { InputAmountInvestmentContext, MonetaryUnitContext } from '../../../contexts/contexts'
+import { useContext, useEffect, useState } from 'react'
+import {
+  CalculationInterestRateContext,
+  InputAmountInvestmentContext,
+  InputInvestmentPeriodContext,
+  MonetaryUnitContext,
+} from '../../../contexts/contexts'
 
 const BoxList = styled.div`
   display: flex;
@@ -104,6 +109,20 @@ const Output = styled(StyledOutput)`
 function ListGeneralСalculation() {
   const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
   const { amountInvestment } = useContext(InputAmountInvestmentContext)
+  const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
+  const { currentAnnualInterestRate } = useContext(CalculationInterestRateContext)
+
+  const [totalProfit, setTotalProfit] = useState('')
+
+  useEffect(() => {
+    calculateTheTotalProfit()
+  }, [currentAnnualInterestRate, currentMonetaryUnit, amountInvestment, valueFromInputRangeInvestmentPeriod])
+
+  function calculateTheTotalProfit() {
+    const totalProfit = (Number(currentAnnualInterestRate) / 100) * Number(amountInvestment) + Number(amountInvestment)
+
+    setTotalProfit(totalProfit.toFixed(currentMonetaryUnit === 'BTC' ? 5 : 2)) // из-за локали может по-разному отображаться значение, неявно обрезая число дроби
+  }
 
   return (
     <BoxList>
@@ -127,14 +146,18 @@ function ListGeneralСalculation() {
 
         <Item>
           <span>Процент прибыли</span>
-          <output htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod interestRate'>91.5 %</output>
+          <output htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod interestRate'>
+            {currentAnnualInterestRate} %
+          </output>
         </Item>
 
         <Item>
           <span>
             Прибыль с <br /> инвестиции
           </span>
-          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 {currentMonetaryUnit}</Output>
+          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>
+            {Number(totalProfit).toLocaleString('en-US')} {currentMonetaryUnit}
+          </Output>
         </Item>
       </ListInvestment>
 

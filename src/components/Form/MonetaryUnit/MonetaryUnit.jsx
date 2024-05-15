@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
 import { MonetaryUnitContext } from '../../../contexts/contexts'
+import { interestRates } from '../CalculationInterestRate/interestRates'
 
 const Fieldset = styled.fieldset`
   display: flex;
@@ -45,7 +46,7 @@ const Label = styled.label`
 `
 
 function MonetaryUnit() {
-  const namesUnits = ['BTC', 'CNY', 'RUB', 'EUR', 'USD']
+  const namesUnits = Object.keys(interestRates)
   const { currentMonetaryUnit, setCurrentMonetaryUnit } = useContext(MonetaryUnitContext)
 
   function handleOnChangeMonetaryUnit(e) {

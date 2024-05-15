@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import StyledSpan from '../../styled/StyledSpan'
 import { interestRates, fillInvestmentMonthesInterestRates } from './interestRates'
 import { useState, useEffect, useContext } from 'react'
-import { InputInvestmentPeriodContext, MonetaryUnitContext } from '../../../contexts/contexts'
+import {
+  CalculationInterestRateContext,
+  InputInvestmentPeriodContext,
+  MonetaryUnitContext,
+} from '../../../contexts/contexts'
 
 const Box = styled.div`
   display: flex;
@@ -52,24 +56,25 @@ const UnitMeasurement = styled.span`
 function CalculationInterestRate() {
   const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
   const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
+  const { setCurrentAnnualInterestRate } = useContext(CalculationInterestRateContext)
 
   const [interestRatePerDay, setInterestRatePerDay] = useState('')
 
   useEffect(() => {
-    fillInvestmentMonthesInterestRates(currentMonetaryUnit)
+    fillInvestmentMonthesInterestRates()
+  }, [])
 
-    const currentInterestRatePerDay = calculateInterestRatePerDay(
-      currentMonetaryUnit,
-      valueFromInputRangeInvestmentPeriod,
-    )
+  useEffect(() => {
+    const interestRate = Number(interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod])
+    setCurrentAnnualInterestRate(interestRate)
+
+    const currentInterestRatePerDay = calculateInterestRatePerDay(interestRate)
 
     setInterestRatePerDay(currentInterestRatePerDay)
   }, [currentMonetaryUnit, valueFromInputRangeInvestmentPeriod])
 
-  function calculateInterestRatePerDay(currentMonetaryUnit, valueFromInputRangeInvestmentPeriod) {
-    return Number(interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod] / 365).toFixed(
-      currentMonetaryUnit === 'BTC' ? 7 : 4,
-    )
+  function calculateInterestRatePerDay(interestRate) {
+    return Number(interestRate / 365).toFixed(currentMonetaryUnit === 'BTC' ? 7 : 4)
   }
 
   return (
