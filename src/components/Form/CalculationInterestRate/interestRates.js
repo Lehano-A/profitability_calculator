@@ -1,10 +1,10 @@
 // представление значений идёт в годовых процентах
 
 const BTC = {
-  3: 0.029,
-  6: 0.033,
-  9: 0.036,
-  12: 0.038,
+  3: 0.29,
+  6: 0.33,
+  9: 0.36,
+  12: 0.38,
 }
 
 const CNY = {
@@ -37,15 +37,17 @@ const USD = {
 
 const interestRates = { BTC, CNY, RUB, EUR, USD }
 
-function fillInvestmentMonthesInterestRates(monetaryUnit) {
-  interestRates[monetaryUnit][1] = interestRates[monetaryUnit][3]
-  interestRates[monetaryUnit][2] = interestRates[monetaryUnit][3]
-  interestRates[monetaryUnit][4] = interestRates[monetaryUnit][6]
-  interestRates[monetaryUnit][5] = interestRates[monetaryUnit][6]
-  interestRates[monetaryUnit][7] = interestRates[monetaryUnit][9]
-  interestRates[monetaryUnit][8] = interestRates[monetaryUnit][9]
-  interestRates[monetaryUnit][10] = interestRates[monetaryUnit][12]
-  interestRates[monetaryUnit][11] = interestRates[monetaryUnit][12]
+function fillInvestmentMonthesInterestRates() {
+  Object.keys(interestRates).forEach((key) => {
+    interestRates[key][1] = interestRates[key][3]
+    interestRates[key][2] = interestRates[key][3]
+    interestRates[key][4] = interestRates[key][6]
+    interestRates[key][5] = interestRates[key][6]
+    interestRates[key][7] = interestRates[key][9]
+    interestRates[key][8] = interestRates[key][9]
+    interestRates[key][10] = interestRates[key][12]
+    interestRates[key][11] = interestRates[key][12]
+  })
 }
 
 export { BTC, CNY, RUB, EUR, USD, interestRates, fillInvestmentMonthesInterestRates }
