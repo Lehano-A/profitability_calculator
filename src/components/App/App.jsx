@@ -7,6 +7,7 @@ import {
   CurrentThemeContext,
   CurrentSizeScreenContext,
   UserDeviceContext,
+  InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
 } from '../../contexts/contexts'
 
@@ -15,6 +16,7 @@ function App() {
   const [currentSizeScreen, setCurrentSizeScreen] = useState({ width: window.innerWidth })
   const [userDevice, setUserDevice] = useState(navigator.userAgent)
   const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState(null)
+  const [amountInvestment, setAmountInvestment] = useState(10000)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -42,10 +44,12 @@ function App() {
           <InputInvestmentPeriodContext.Provider
             value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
           >
-            <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-              <GlobalStyle />
-              <MajorPage />
-            </ThemeProvider>
+            <InputAmountInvestmentContext.Provider value={{ amountInvestment, setAmountInvestment }}>
+              <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+                <GlobalStyle />
+                <MajorPage />
+              </ThemeProvider>
+            </InputAmountInvestmentContext.Provider>
           </InputInvestmentPeriodContext.Provider>
         </UserDeviceContext.Provider>
       </CurrentSizeScreenContext.Provider>

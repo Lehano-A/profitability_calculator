@@ -4,7 +4,7 @@ import StyledInput from '../../styled/StyledInput'
 import InputRange from '../../common/Form/InputRange/InputRange'
 import { useState, useRef, useContext } from 'react'
 import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
-import { CurrentSizeScreenContext } from '../../../contexts/contexts'
+import { CurrentSizeScreenContext, InputAmountInvestmentContext } from '../../../contexts/contexts'
 
 const BoxInputs = styled.div`
   display: flex;
@@ -84,10 +84,11 @@ const Unit = styled(StyledInput)`
 `
 
 function InputAmountInvestment() {
-  const [inputNumberValue, setInputNumberValue] = useState(10000)
+
   const theme = useTheme()
 
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
+  const { amountInvestment, setAmountInvestment } = useContext(InputAmountInvestmentContext)
 
   const forwardRefInputRange = useRef(null)
 
@@ -97,11 +98,11 @@ function InputAmountInvestment() {
 
       if (currentValue.length === 2 && currentValue.startsWith(0)) {
         // если значение начинается с 0 и введён второй символ
-        setInputNumberValue(currentValue.substring(1)) // присваиваем второй символ
+        setAmountInvestment(currentValue.substring(1)) // присваиваем второй символ
         return
       }
 
-      setInputNumberValue(currentValue === '' ? 0 : currentValue)
+      setAmountInvestment(currentValue === '' ? 0 : currentValue)
     }
   }
 
@@ -118,10 +119,10 @@ function InputAmountInvestment() {
 
       <BoxInputs>
         <InputRange
-          setInputNumberValue={setInputNumberValue}
+          setInputNumberValue={setAmountInvestment}
           ref={forwardRefInputRange}
           settings={{
-            value: inputNumberValue,
+            value: amountInvestment,
             min: 0,
             max: 99999,
             id: 'inputRangeAmountInvestment',
@@ -130,7 +131,7 @@ function InputAmountInvestment() {
 
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
           <InputNumber
-            value={inputNumberValue === 0 ? '' : inputNumberValue}
+            value={amountInvestment}
             onChange={handleOnChangeInputNumber}
             id='inputNumberAmountInvestment'
             type='number'

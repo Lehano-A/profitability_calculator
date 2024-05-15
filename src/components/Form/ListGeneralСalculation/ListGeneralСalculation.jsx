@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
+import { useContext } from 'react'
+import { InputAmountInvestmentContext } from '../../../contexts/contexts'
 
 const BoxList = styled.div`
   display: flex;
@@ -100,6 +102,7 @@ const Output = styled(StyledOutput)`
 `
 
 function ListGeneralСalculation() {
+  const { amountInvestment } = useContext(InputAmountInvestmentContext)
   return (
     <BoxList>
       <ListHistograms>
@@ -115,7 +118,7 @@ function ListGeneralСalculation() {
       <ListInvestment>
         <Item>
           <span>Инвестиция</span>
-          <output htmlFor='inputNumberAmountInvestment'>10,000 BTC</output>
+          <output htmlFor='inputNumberAmountInvestment'>{Number(amountInvestment).toLocaleString('en-US')} BTC</output>
         </Item>
 
         <Item>
