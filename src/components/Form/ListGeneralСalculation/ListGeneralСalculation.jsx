@@ -3,7 +3,7 @@ import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
 import { useContext } from 'react'
-import { InputAmountInvestmentContext } from '../../../contexts/contexts'
+import { InputAmountInvestmentContext, MonetaryUnitContext } from '../../../contexts/contexts'
 
 const BoxList = styled.div`
   display: flex;
@@ -102,7 +102,9 @@ const Output = styled(StyledOutput)`
 `
 
 function ListGeneralСalculation() {
+  const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
   const { amountInvestment } = useContext(InputAmountInvestmentContext)
+
   return (
     <BoxList>
       <ListHistograms>
@@ -118,7 +120,9 @@ function ListGeneralСalculation() {
       <ListInvestment>
         <Item>
           <span>Инвестиция</span>
-          <output htmlFor='inputNumberAmountInvestment'>{Number(amountInvestment).toLocaleString('en-US')} BTC</output>
+          <output htmlFor='inputNumberAmountInvestment'>
+            {Number(amountInvestment).toLocaleString('en-US')} {currentMonetaryUnit}
+          </output>
         </Item>
 
         <Item>
@@ -130,7 +134,7 @@ function ListGeneralСalculation() {
           <span>
             Прибыль с <br /> инвестиции
           </span>
-          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 BTC</Output>
+          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>9,150 {currentMonetaryUnit}</Output>
         </Item>
       </ListInvestment>
 
