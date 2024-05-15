@@ -96,6 +96,11 @@ function InputAmountInvestment() {
     if (e.target.value.length <= 5) {
       const currentValue = e.target.value
 
+      if (currentValue.length === 1 && currentValue === '0') {
+        setAmountInvestment(1)
+        return
+      }
+
       if (currentValue.length === 2 && currentValue.startsWith(0)) {
         // если значение начинается с 0 и введён второй символ
         setAmountInvestment(currentValue.substring(1)) // присваиваем второй символ
@@ -123,7 +128,7 @@ function InputAmountInvestment() {
           ref={forwardRefInputRange}
           settings={{
             value: amountInvestment,
-            min: 0,
+            min: 1,
             max: 99999,
             id: 'inputRangeAmountInvestment',
           }}
