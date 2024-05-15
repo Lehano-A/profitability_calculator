@@ -45,7 +45,7 @@ const Label = styled.label`
 `
 
 function MonetaryUnit() {
-  const namesUnits = ['BTC', 'UAH', 'RUB', 'EUR', 'USD']
+  const namesUnits = ['BTC', 'CNY', 'RUB', 'EUR', 'USD']
   const { currentMonetaryUnit, setCurrentMonetaryUnit } = useContext(MonetaryUnitContext)
 
   function handleOnChangeMonetaryUnit(e) {
