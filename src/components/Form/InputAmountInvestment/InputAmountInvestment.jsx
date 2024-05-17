@@ -103,11 +103,10 @@ function InputAmountInvestment() {
 
       if (currentValue.length === 2 && currentValue.startsWith(0)) {
         // если значение начинается с 0 и введён второй символ
-        setAmountInvestment(currentValue.substring(1)) // присваиваем второй символ
+        setAmountInvestment(Number(currentValue.substring(1))) // присваиваем второй символ
         return
       }
-
-      setAmountInvestment(currentValue === '' ? 0 : currentValue)
+      setAmountInvestment(currentValue === '' ? 1 : Number(currentValue))
     }
   }
 

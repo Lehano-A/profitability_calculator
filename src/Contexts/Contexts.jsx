@@ -7,6 +7,7 @@ const MonetaryUnitContext = createContext()
 const CalculationInterestRateContext = createContext()
 const InputAmountInvestmentContext = createContext()
 const InputInvestmentPeriodContext = createContext()
+const ListGeneralСalculationContext = createContext()
 
 export {
   CurrentThemeContext,
@@ -16,4 +17,5 @@ export {
   CalculationInterestRateContext,
   InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
+  ListGeneralСalculationContext,
 }

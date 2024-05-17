@@ -58,23 +58,25 @@ function CalculationInterestRate() {
   const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
   const { setCurrentAnnualInterestRate } = useContext(CalculationInterestRateContext)
 
-  const [interestRatePerDay, setInterestRatePerDay] = useState('')
+  const [сurrentInterestRatePerDay, setCurrentInterestRatePerDay] = useState('')
 
   useEffect(() => {
     fillInvestmentMonthesInterestRates()
   }, [])
 
   useEffect(() => {
-    const interestRate = Number(interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod])
-    setCurrentAnnualInterestRate(interestRate)
+    if (valueFromInputRangeInvestmentPeriod) {
+      const currentInterestRate = interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod]
+      setCurrentAnnualInterestRate(currentInterestRate) // текущая годовая %-я ставка
 
-    const currentInterestRatePerDay = calculateInterestRatePerDay(interestRate)
-
-    setInterestRatePerDay(currentInterestRatePerDay)
+      const currentInterestRatePerDay = calculateInterestRatePerDay(currentInterestRate) // текущая дневная %-я ставка
+      setCurrentInterestRatePerDay(currentInterestRatePerDay)
+    }
   }, [currentMonetaryUnit, valueFromInputRangeInvestmentPeriod])
 
   function calculateInterestRatePerDay(interestRate) {
-    return Number(interestRate / 365).toFixed(currentMonetaryUnit === 'BTC' ? 7 : 4)
+    const calculatedInterestRatePerDay = interestRate / 365
+    return calculatedInterestRatePerDay.toFixed(currentMonetaryUnit === 'BTC' ? 7 : 4)
   }
 
   return (
@@ -83,7 +85,7 @@ function CalculationInterestRate() {
 
       <BoxOutput>
         <Output id='interestRate' htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod'>
-          {interestRatePerDay}
+          {сurrentInterestRatePerDay}
         </Output>
         <UnitMeasurement>в день</UnitMeasurement>
       </BoxOutput>

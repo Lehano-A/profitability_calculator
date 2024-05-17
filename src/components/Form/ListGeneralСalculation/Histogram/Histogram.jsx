@@ -1,13 +1,33 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import StyledOutput from '../../../styled/StyledOutput'
 import StyledSpan from '../../../styled/StyledSpan'
-import '../../../../animations.css'
+import { useContext, useEffect, useState } from 'react'
+import {
+  InputAmountInvestmentContext,
+  ListGeneralСalculationContext,
+  MonetaryUnitContext,
+} from '../../../../contexts/contexts'
+import {
+  changeHeightAmountInvestmentWidth120,
+  changeHeightAmountInvestmentWidth160,
+  changeHeightWithProfitWidth120,
+  changeHeightWithProfitWidth160,
+} from '../../../../animations.js'
+import addLocale from '../../../../utils/addLocale.js'
 
 const BoxMeterInvestment = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
+  @media (min-width: 960px) {
+    min-width: 135px;
+  }
+
+  @media (min-width: 1200px) {
+    min-width: 170px;
+  }
 `
 
 const MeterHidden = styled.meter`
@@ -26,23 +46,31 @@ const StyledDivAsMeter = styled.div`
 
 const HistogramInvestment = styled(StyledDivAsMeter)`
   @media (min-width: 960px) {
-    animation: change-height-amount-investment-120-width 1s ease-in-out forwards;
+    animation: ${changeHeightAmountInvestmentWidth120} 1s ease-in-out forwards;
   }
 
   @media (min-width: 1200px) {
-    animation: change-height-amount-investment-160-width 1s ease-in-out forwards;
+    animation: ${changeHeightAmountInvestmentWidth160} 1s ease-in-out forwards;
   }
 `
 
 const HistogramInvestmentProfit = styled(StyledDivAsMeter)`
-  background: ${(props) => props.theme.getParamsHistogramBackground()};
+  background: ${(props) => props.theme.getParamsHistogramBackground(props.$paramsElement.endGradient)};
 
   @media (min-width: 960px) {
-    animation: change-height-with-profit-120-width 1s ease-in-out forwards;
+    animation: ${(props) => {
+      return css`
+        ${changeHeightWithProfitWidth120({ height: props.$paramsElement.height })} 1s ease-in-out forwards
+      `
+    }};
   }
 
   @media (min-width: 1200px) {
-    animation: change-height-with-profit-160-width 1s ease-in-out forwards;
+    animation: ${(props) => {
+      return css`
+        ${changeHeightWithProfitWidth160({ height: props.$paramsElement.height })} 1s ease-in-out forwards
+      `
+    }};
   }
 `
 
@@ -69,13 +97,33 @@ const Output = styled(StyledOutput)`
 `
 
 function Histogram({ type }) {
+  const { amountInvestment } = useContext(InputAmountInvestmentContext)
+  const { totalAmountWithProfit, investmentProfit } = useContext(ListGeneralСalculationContext)
+  const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
+
+  const [paramsElementInvestmentProfit, setParamsElementInvestmentProfit] = useState({
+    endGradient: 0,
+    height: 0,
+  })
+
+  useEffect(() => {
+    const percentageProfitFromTotal = (Number(investmentProfit) / Number(totalAmountWithProfit)) * 100
+
+    setParamsElementInvestmentProfit({
+      endGradient: Number(percentageProfitFromTotal.toFixed(2)),
+      height: 100 + Number(percentageProfitFromTotal.toFixed(2)),
+    })
+  }, [totalAmountWithProfit])
+
   return (
     <>
       {type === 'inputNumberAmountInvestment' && (
         <BoxMeterInvestment>
           <ItemName>Инвестировали</ItemName>
-          <Output>10,000 BTC</Output>
-          <MeterHidden min='0' max='10000' value='10000' />
+          <Output>
+            {addLocale(amountInvestment)} {currentMonetaryUnit}
+          </Output>
+          <MeterHidden min='0' max={amountInvestment} value={amountInvestment} />
           <HistogramInvestment />
         </BoxMeterInvestment>
       )}
@@ -83,9 +131,11 @@ function Histogram({ type }) {
       {type === 'investmentWithProfit' && (
         <BoxMeterInvestment>
           <ItemName>Получаете</ItemName>
-          <Output>19,150 BTC</Output>
-          <MeterHidden min='0' max='10000' value='19150' />
-          <HistogramInvestmentProfit />
+          <Output>
+            {addLocale(totalAmountWithProfit)} {currentMonetaryUnit}
+          </Output>
+          <MeterHidden min='0' max={totalAmountWithProfit} value={totalAmountWithProfit} />
+          <HistogramInvestmentProfit $paramsElement={paramsElementInvestmentProfit} />
         </BoxMeterInvestment>
       )}
     </>

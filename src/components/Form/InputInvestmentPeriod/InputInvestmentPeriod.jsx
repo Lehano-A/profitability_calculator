@@ -41,7 +41,7 @@ function InputInvestmentPeriod() {
   }, [])
 
   useEffect(() => {
-    setValueFromInputRangeInvestmentPeriod(currentRulerValue)
+    setValueFromInputRangeInvestmentPeriod(Number(currentRulerValue))
   }, [currentRulerValue])
 
   function createValuesForRuler() {
@@ -71,7 +71,7 @@ function InputInvestmentPeriod() {
 
       <BoxInputRangeAndRulerValues tabIndex='0' id='boxInputRangeAndRulerValues'>
         <InputRange
-          setCurrentValue={setCurrentRulerValue}
+          setCurrentValueInputInvestmentPeriod={setCurrentRulerValue}
           ref={forwardRefInputRange}
           settings={{
             value: currentRulerValue,

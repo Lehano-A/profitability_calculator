@@ -11,16 +11,19 @@ import {
   CalculationInterestRateContext,
   InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
+  ListGeneralСalculationContext,
 } from '../../contexts/contexts'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light')
   const [currentSizeScreen, setCurrentSizeScreen] = useState({ width: window.innerWidth })
   const [userDevice, setUserDevice] = useState(navigator.userAgent)
-  const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState(null)
+  const [valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod] = useState('')
   const [currentMonetaryUnit, setCurrentMonetaryUnit] = useState('BTC')
   const [currentAnnualInterestRate, setCurrentAnnualInterestRate] = useState('')
   const [amountInvestment, setAmountInvestment] = useState(10000)
+  const [totalAmountWithProfit, setTotalAmountWithProfit] = useState('')
+  const [investmentProfit, setInvestmentProfit] = useState('')
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -53,10 +56,14 @@ function App() {
                 <InputInvestmentPeriodContext.Provider
                   value={{ valueFromInputRangeInvestmentPeriod, setValueFromInputRangeInvestmentPeriod }}
                 >
-                  <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-                    <GlobalStyle />
-                    <MajorPage />
-                  </ThemeProvider>
+                  <ListGeneralСalculationContext.Provider
+                    value={{ totalAmountWithProfit, setTotalAmountWithProfit, investmentProfit, setInvestmentProfit }}
+                  >
+                    <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
+                      <GlobalStyle />
+                      <MajorPage />
+                    </ThemeProvider>
+                  </ListGeneralСalculationContext.Provider>
                 </InputInvestmentPeriodContext.Provider>
               </InputAmountInvestmentContext.Provider>
             </CalculationInterestRateContext.Provider>

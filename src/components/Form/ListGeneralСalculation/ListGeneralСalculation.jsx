@@ -2,13 +2,15 @@ import styled from 'styled-components'
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 import HistogramInvestment from './Histogram/Histogram'
 import StyledOutput from '../../styled/StyledOutput'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import {
   CalculationInterestRateContext,
   InputAmountInvestmentContext,
   InputInvestmentPeriodContext,
+  ListGeneralСalculationContext,
   MonetaryUnitContext,
 } from '../../../contexts/contexts'
+import addLocale from '../../../utils/addLocale'
 
 const BoxList = styled.div`
   display: flex;
@@ -111,17 +113,18 @@ function ListGeneralСalculation() {
   const { amountInvestment } = useContext(InputAmountInvestmentContext)
   const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
   const { currentAnnualInterestRate } = useContext(CalculationInterestRateContext)
-
-  const [totalProfit, setTotalProfit] = useState('')
+  const { investmentProfit, setTotalAmountWithProfit, setInvestmentProfit } = useContext(ListGeneralСalculationContext)
 
   useEffect(() => {
     calculateTheTotalProfit()
   }, [currentAnnualInterestRate, currentMonetaryUnit, amountInvestment, valueFromInputRangeInvestmentPeriod])
 
   function calculateTheTotalProfit() {
-    const totalProfit = (Number(currentAnnualInterestRate) / 100) * Number(amountInvestment) + Number(amountInvestment)
+    const investmentProfit = (currentAnnualInterestRate / 100) * amountInvestment
+    const totalAmountWithProfit = investmentProfit + amountInvestment
 
-    setTotalProfit(totalProfit.toFixed(currentMonetaryUnit === 'BTC' ? 5 : 2)) // из-за локали может по-разному отображаться значение, неявно обрезая число дроби
+    setInvestmentProfit(Number(investmentProfit).toFixed(currentMonetaryUnit === 'BTC' ? 4 : 2))
+    setTotalAmountWithProfit(Number(totalAmountWithProfit).toFixed(currentMonetaryUnit === 'BTC' ? 4 : 2))
   }
 
   return (
@@ -140,7 +143,7 @@ function ListGeneralСalculation() {
         <Item>
           <span>Инвестиция</span>
           <output htmlFor='inputNumberAmountInvestment'>
-            {Number(amountInvestment).toLocaleString('en-US')} {currentMonetaryUnit}
+            {addLocale(amountInvestment)} {currentMonetaryUnit}
           </output>
         </Item>
 
@@ -156,7 +159,7 @@ function ListGeneralСalculation() {
             Прибыль с <br /> инвестиции
           </span>
           <Output htmlFor='inputRangeInvestmentPeriod interestRate'>
-            {Number(totalProfit).toLocaleString('en-US')} {currentMonetaryUnit}
+            {addLocale(investmentProfit)} {currentMonetaryUnit}
           </Output>
         </Item>
       </ListInvestment>

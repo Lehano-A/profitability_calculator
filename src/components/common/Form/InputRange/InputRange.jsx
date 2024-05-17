@@ -35,7 +35,7 @@ const PseudoTrack = styled.div`
 `
 
 const InputRange = forwardRef(function InputRange(
-  { settings, setCurrentValue, setInputNumberValue, required = false },
+  { settings, setCurrentValueInputInvestmentPeriod, setInputNumberValue, required = false },
   ref,
 ) {
   const { value, min = 0, max = 100 } = settings || {}
@@ -47,12 +47,12 @@ const InputRange = forwardRef(function InputRange(
   }, [value])
 
   function handleOnChange(e) {
-    const { value } = e.target
+    const value = Number(e.target.value)
 
     setXCoord(getXCoord(value))
 
-    setCurrentValue && setCurrentValue(e.target.value)
-    setInputNumberValue && setInputNumberValue(e.target.value)
+    setCurrentValueInputInvestmentPeriod && setCurrentValueInputInvestmentPeriod(value)
+    setInputNumberValue && setInputNumberValue(value)
   }
 
   function handleOnFocus() {

@@ -319,8 +319,8 @@ function getParamsBackground(xCoord) {
   return `linear-gradient(90deg, transparent ${xCoord}px, ${this.palette.bg.secondary} 0)`
 }
 
-function getParamsHistogramBackground() {
-  return `linear-gradient(0deg, ${this.palette.histogram.bg.gradient.start} 52.16%, ${this.palette.histogram.bg.gradient.end}  47.84%)`
+function getParamsHistogramBackground(endGradient) {
+  return `linear-gradient(0deg, ${this.palette.histogram.bg.gradient.start} 100px, ${this.palette.histogram.bg.gradient.end}  ${endGradient}px)`
 }
 
 function getParamsTrackBackground(xCoord) {
