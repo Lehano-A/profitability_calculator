@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import { MonetaryUnitContext } from '../../../contexts/contexts'
 import { interestRates } from '../CalculationInterestRate/interestRates'
+import StyledRadio from '../../styled/StyledRadio'
 
 const Fieldset = styled.fieldset`
   display: flex;
@@ -11,11 +12,7 @@ const Fieldset = styled.fieldset`
   border: none;
 `
 
-const Radio = styled.input`
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-`
+const Radio = styled(StyledRadio)``
 
 const Label = styled.label`
   font-size: 18px;
@@ -55,11 +52,11 @@ function MonetaryUnit() {
   return (
     <Fieldset id='componentMonetaryUnit'>
       {namesUnits.map((name, id) => (
-        <Label key={id} htmlFor={name}>
+        <Label key={id}>
           <Radio
             defaultChecked={name === currentMonetaryUnit && true}
             type='radio'
-            name='monetaryUnit'
+            name='componentMonetaryUnit'
             id={name}
             value={currentMonetaryUnit}
             required

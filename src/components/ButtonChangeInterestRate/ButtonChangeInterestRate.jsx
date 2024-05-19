@@ -1,66 +1,50 @@
 import styled from 'styled-components'
 import { useContext } from 'react'
-
 import { CalculationInterestRateContext } from '../../contexts/contexts'
+import StyledRadio from '../styled/StyledRadio'
 
-const Box = styled.div`
+const Fieldset = styled.fieldset`
   position: absolute;
   top: -8px;
   display: none;
-  justify-content: center;
+  justify-content: space-between;
   width: 116px;
-  cursor: default;
+  margin: 0;
+  padding: 0 5px;
+  border: none;
 
   @media (min-width: 960px) {
     display: flex;
   }
 `
 
-const Fieldset = styled.fieldset`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 0 5px;
-  border: none;
-  margin: 0;
-`
-
-const BoxLabelAndRadio = styled.div`
+const Label = styled.label`
   position: relative;
-  min-width: 25px;
-  width: 20px;
-  height: 15px;
-  border-radius: 50px;
-  background: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.primary};
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  &:has(input:checked) {
-    background-color: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.checked};
-  }
-`
-
-const Label = styled.label`
-  cursor: pointer;
+  min-width: 25px;
+  height: 15px;
+  background: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.primary};
   color: ${(props) => props.theme.palette.input.span};
   font-size: 1.1rem;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.checked};
+    color: ${(props) => props.theme.palette.input.value};
+  }
 
   &:has(input:checked) {
+    background-color: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.checked};
     color: ${(props) => props.theme.palette.input.value};
   }
 `
 
-const Radio = styled.input`
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  margin: 0;
-  width: 0;
-  height: 0;
+const Radio = styled(StyledRadio)`
+  cursor: pointer;
 `
 
 function ButtonChangeInterestRate() {
@@ -71,26 +55,18 @@ function ButtonChangeInterestRate() {
   }
 
   return (
-    <Box as='div'>
-      <Fieldset id='fieldsetChangeInterestRate' onChange={handleOnChangeRadio}>
-        <BoxLabelAndRadio>
-          <Label>
-            x1
-            <Radio id='x1' value='1' type='radio' name='fieldsetChangeInterestRate' />
-          </Label>
-        </BoxLabelAndRadio>
-        <BoxLabelAndRadio>
-          <Label>
-            x10 <Radio defaultChecked id='x10' value='10' type='radio' name='fieldsetChangeInterestRate' />
-          </Label>
-        </BoxLabelAndRadio>
-        <BoxLabelAndRadio>
-          <Label>
-            x25 <Radio id='x25' value='25' type='radio' name='fieldsetChangeInterestRate' />
-          </Label>
-        </BoxLabelAndRadio>
-      </Fieldset>
-    </Box>
+    <Fieldset id='fieldsetChangeInterestRate' onChange={handleOnChangeRadio}>
+      <Label>
+        x1
+        <Radio id='x1' value='1' type='radio' name='fieldsetChangeInterestRate' />
+      </Label>
+      <Label>
+        x10 <Radio defaultChecked id='x10' value='10' type='radio' name='fieldsetChangeInterestRate' />
+      </Label>
+      <Label>
+        x25 <Radio id='x25' value='25' type='radio' name='fieldsetChangeInterestRate' />
+      </Label>
+    </Fieldset>
   )
 }
 
