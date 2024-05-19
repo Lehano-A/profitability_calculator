@@ -14,7 +14,6 @@ function useDate() {
     const endDate = getNewDateIncludeInvestmentPeriod(startDate, valueInvestmentPeriod)
 
     const { year, month, day } = decomposeDate(endDate)
-
     return `${year}-${transformMonth(month)}-${transformDay(day)}`
   }
 
@@ -26,7 +25,7 @@ function useDate() {
 
     const endDate = new Date()
     endDate.setFullYear(year)
-    endDate.setMonth(totalMonthsWithInvestmentPeriod + 1)
+    endDate.setMonth(totalMonthsWithInvestmentPeriod)
     endDate.setDate(day)
 
     checkLastDayEndPeriod(startDate, endDate)
