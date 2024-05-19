@@ -24,6 +24,7 @@ function App() {
   const [amountInvestment, setAmountInvestment] = useState(10000)
   const [totalAmountWithProfit, setTotalAmountWithProfit] = useState('')
   const [investmentProfit, setInvestmentProfit] = useState('')
+  const [multiplicationValue, setMultiplicationValue] = useState(3)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -50,7 +51,12 @@ function App() {
         <UserDeviceContext.Provider value={userDevice}>
           <MonetaryUnitContext.Provider value={{ currentMonetaryUnit, setCurrentMonetaryUnit }}>
             <CalculationInterestRateContext.Provider
-              value={{ currentAnnualInterestRate, setCurrentAnnualInterestRate }}
+              value={{
+                currentAnnualInterestRate,
+                setCurrentAnnualInterestRate,
+                multiplicationValue,
+                setMultiplicationValue,
+              }}
             >
               <InputAmountInvestmentContext.Provider value={{ amountInvestment, setAmountInvestment }}>
                 <InputInvestmentPeriodContext.Provider

@@ -148,6 +148,18 @@ const lightTheme = {
       focus: lightThemeColors.primary,
     },
 
+    buttonChangeInterestRate: {
+      label: {
+        bg: {
+          primary: lightThemeColors.shades.gray[200],
+          checked: lightThemeColors.primary,
+        },
+      },
+      borderElement: {
+        bg: lightThemeColors.secondary,
+      },
+    },
+
     output: {
       value: lightThemeColors.tertiary,
     },
@@ -272,6 +284,15 @@ const darkTheme = {
       },
 
       focus: darkThemeColors.primary,
+    },
+
+    buttonChangeInterestRate: {
+      label: {
+        bg: {
+          primary: darkThemeColors.secondary,
+          checked: darkThemeColors.primary,
+        },
+      },
     },
 
     list: {

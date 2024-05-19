@@ -7,8 +7,10 @@ import {
   InputInvestmentPeriodContext,
   MonetaryUnitContext,
 } from '../../../contexts/contexts'
+import ButtonChangeInterestRate from '../../ButtonChangeInterestRate/ButtonChangeInterestRate'
 
 const Box = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,7 +20,6 @@ const Box = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 15px;
-
   background-color: ${(props) => props.theme.palette.box};
 
   @media (min-width: 1200px) {
@@ -56,8 +57,7 @@ const UnitMeasurement = styled.span`
 function CalculationInterestRate() {
   const { currentMonetaryUnit } = useContext(MonetaryUnitContext)
   const { valueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
-  const { setCurrentAnnualInterestRate } = useContext(CalculationInterestRateContext)
-
+  const { multiplicationValue, setCurrentAnnualInterestRate } = useContext(CalculationInterestRateContext)
   const [сurrentInterestRatePerDay, setCurrentInterestRatePerDay] = useState('')
 
   useEffect(() => {
@@ -66,13 +66,14 @@ function CalculationInterestRate() {
 
   useEffect(() => {
     if (valueFromInputRangeInvestmentPeriod) {
-      const currentInterestRate = interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod]
+      const currentInterestRate =
+        interestRates[currentMonetaryUnit][valueFromInputRangeInvestmentPeriod] * multiplicationValue
       setCurrentAnnualInterestRate(currentInterestRate) // текущая годовая %-я ставка
 
       const currentInterestRatePerDay = calculateInterestRatePerDay(currentInterestRate) // текущая дневная %-я ставка
       setCurrentInterestRatePerDay(currentInterestRatePerDay)
     }
-  }, [currentMonetaryUnit, valueFromInputRangeInvestmentPeriod])
+  }, [currentMonetaryUnit, valueFromInputRangeInvestmentPeriod, multiplicationValue])
 
   function calculateInterestRatePerDay(interestRate) {
     const calculatedInterestRatePerDay = interestRate / 365
@@ -81,8 +82,9 @@ function CalculationInterestRate() {
 
   return (
     <Box id='componentCalculationInterestRate'>
-      <Span as='span'>Процентная ставка</Span>
+      <ButtonChangeInterestRate />
 
+      <Span as='span'>Процентная ставка</Span>
       <BoxOutput>
         <Output id='interestRate' htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod'>
           {сurrentInterestRatePerDay}

@@ -70,6 +70,7 @@ const fromRightToLeft = keyframes`
     left: -5%;
   }
 `
+
 export {
   changeHeightAmountInvestmentWidth120,
   changeHeightAmountInvestmentWidth160,

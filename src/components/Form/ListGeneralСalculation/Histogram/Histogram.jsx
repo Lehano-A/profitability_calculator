@@ -38,7 +38,6 @@ const MeterHidden = styled.meter`
 
 const StyledDivAsMeter = styled.div`
   max-height: 400px;
-  background-color: #fff;
   box-shadow: 20px 10px 60px rgba(0, 0, 0, 0.07);
   border-radius: 15px;
   background: ${(props) => props.theme.palette.histogram.bg.primary};

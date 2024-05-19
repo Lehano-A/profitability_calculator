@@ -1,21 +1,22 @@
 import { useContext, useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CurrentThemeContext } from '../../contexts/contexts'
+import { fromLeftToRight, fromRightToLeft } from '../../animations'
 
 const Button = styled.button`
-  position: absolute;
-  top: 30px;
   display: flex;
   width: 45px;
   height: 20px;
   padding: 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
   background-color: ${(props) =>
     props.$currentTheme === 'light'
       ? props.theme.palette.buttonChangeTheme.bg.lightTheme
       : props.theme.palette.buttonChangeTheme.bg.darkTheme};
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
 
   @media (min-width: 320px) {
     align-self: end;
@@ -31,24 +32,20 @@ const Button = styled.button`
   }
 `
 
-const Thumb = styled.div((props) => {
-  const displaySide = props.$currentTheme === 'light' ? 'left' : 'right'
+const Thumb = styled.div`
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 25px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
 
-  return {
-    position: 'relative',
-    top: '50%',
-    [displaySide]: '-5%',
-    transform: 'translateY(-50%)',
-    'max-width': '25px',
-
-    width: '22px',
-    height: '22px',
-    'border-radius': '50%',
-    'background-color': props.theme.palette.buttonChangeTheme.thumb.primary,
-    animation: `${props.$animationForChangeTheme ? props.$animationForChangeTheme : 'none'}`,
-    'box-shadow': `0px 0px 10px 2px ${props.theme.palette.buttonChangeTheme.thumb.boxShadow}`,
-  }
-})
+  ${(props) => (props.$currentTheme === 'light' ? 'left' : 'right')}: -5%; /* left или right для position: absolute */
+  background-color: ${(props) => props.theme.palette.buttonChangeTheme.thumb.primary};
+  animation: ${(props) => (props.$animationForChangeTheme ? props.$animationForChangeTheme : 'none')};
+  box-shadow: 0px 0px 10px 2px ${(props) => props.theme.palette.buttonChangeTheme.thumb.boxShadow};
+`
 
 function ButtonChangeTheme() {
   const [animationForChangeTheme, setAnimationForChangeTheme] = useState('none')
@@ -67,12 +64,21 @@ function ButtonChangeTheme() {
   function handleOnClick() {
     if (!timeoutClick) {
       setTimeoutClick(true)
+
       if (currentTheme === 'light') {
+        const animationForDark = css`
+          ${fromLeftToRight} 0.5s ease-out forwards
+        `
+
         setCurrentTheme('dark')
-        setAnimationForChangeTheme('from-left-to-right 0.5s ease-out forwards')
+        setAnimationForChangeTheme(animationForDark)
       } else {
+        const animationForLight = css`
+          ${fromRightToLeft} 0.5s ease-out forwards
+        `
+
         setCurrentTheme('light')
-        setAnimationForChangeTheme('from-right-to-left 0.5s ease-out forwards')
+        setAnimationForChangeTheme(animationForLight)
       }
     }
   }
