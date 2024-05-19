@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components'
 import Header from '../../Header/Header'
 import ButtonChangeTheme from '../../ButtonChangeTheme/ButtonChangeTheme'
 import Main from '../../Main/Main'
-import { CurrentSizeScreenContext } from '../../../contexts/contexts'
+import { CurrentSizeScreenContext, CurrentThemeContext } from '../../../contexts/contexts'
 
 const CommonBox = styled.div`
   background: ${(props) => props.$bg};
@@ -66,17 +66,18 @@ function MajorPage() {
   const [geometryBoxListGeneralCalculation, setGeometryBoxListGeneralCalculation] = useState(null)
 
   const theme = useTheme()
+  const { currentTheme } = useContext(CurrentThemeContext)
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
 
   useEffect(() => {
-    if (currentSizeScreen.width >= theme.breakpoints.l && geometryBoxListGeneralCalculation) {
+    if (geometryBoxListGeneralCalculation) {
       if (currentSizeScreen.width >= theme.breakpoints.l) {
         setBgCommonBox(theme.getParamsBackground(geometryBoxListGeneralCalculation.x))
       } else if (currentSizeScreen.width < theme.breakpoints.l) {
         setBgCommonBox(theme.palette.bg.primary)
       }
     }
-  }, [currentSizeScreen.width, geometryBoxListGeneralCalculation, theme])
+  }, [currentSizeScreen.width, geometryBoxListGeneralCalculation, currentTheme])
 
   return (
     <CommonBox $bg={bgCommonBox}>
