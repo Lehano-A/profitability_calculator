@@ -1,7 +1,7 @@
 import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import InputRange from '../../common/Form/InputRange/InputRange'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react'
 import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
 import { InputInvestmentPeriodContext } from '../../../contexts/contexts'
 
@@ -27,18 +27,12 @@ const Span = styled.span`
   text-align: center;
 `
 
-function InputInvestmentPeriod() {
+const InputInvestmentPeriod = forwardRef(function InputInvestmentPeriod(props, ref) {
   const theme = useTheme()
   const forwardRefInputRange = useRef(null)
   const { setValueFromInputRangeInvestmentPeriod } = useContext(InputInvestmentPeriodContext)
 
   const [currentRulerValue, setCurrentRulerValue] = useState(theme.elements.inputRange.settings.defaultValue)
-
-  useEffect(() => {
-    document.addEventListener('keyup', handleKeyUp)
-
-    return () => document.addEventListener('keyup', handleKeyUp)
-  }, [])
 
   useEffect(() => {
     setValueFromInputRangeInvestmentPeriod(Number(currentRulerValue))
@@ -57,22 +51,16 @@ function InputInvestmentPeriod() {
     return box
   }
 
-  function handleKeyUp(e) {
-    if (e.code === 'Tab' && e.target.id === 'boxInputRangeAndRulerValues' && forwardRefInputRange.current !== null) {
-      forwardRefInputRange.current.focus() // если с помощью Tab попадаем на родителя-обёртку InputRange, то переводим фокус на inputRange (для iOS)
-    }
-  }
-
   return (
     <BoxSectionForm id='componentInputInvestmentPeriod'>
-      <SpecialLabelInputRange refInputRange={forwardRefInputRange} idInputRange='inputRangeInvestmentPeriod'>
+      <SpecialLabelInputRange refInputRange={ref} idInputRange='inputRangeInvestmentPeriod'>
         Срок инвестиций ( Месяцев )
       </SpecialLabelInputRange>
 
       <BoxInputRangeAndRulerValues tabIndex='0' id='boxInputRangeAndRulerValues'>
         <InputRange
           setCurrentValueInputInvestmentPeriod={setCurrentRulerValue}
-          ref={forwardRefInputRange}
+          ref={ref}
           settings={{
             value: currentRulerValue,
             min: theme.elements.inputRange.settings.min,
@@ -92,6 +80,6 @@ function InputInvestmentPeriod() {
       </BoxInputRangeAndRulerValues>
     </BoxSectionForm>
   )
-}
+})
 
 export default InputInvestmentPeriod

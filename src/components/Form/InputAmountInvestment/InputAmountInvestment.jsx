@@ -2,7 +2,7 @@ import styled, { useTheme } from 'styled-components'
 import BoxSectionForm from '../../common/Form/BoxSectionForm/BoxSectionForm'
 import StyledInput from '../../styled/StyledInput'
 import InputRange from '../../common/Form/InputRange/InputRange'
-import { useRef, useContext } from 'react'
+import { useRef, useContext, forwardRef } from 'react'
 import SpecialLabelInputRange from '../../common/Form/SpecialLabelInputRange/SpecialLabelInputRange'
 import { CurrentSizeScreenContext, InputAmountInvestmentContext, MonetaryUnitContext } from '../../../contexts/contexts'
 
@@ -83,7 +83,7 @@ const Unit = styled(StyledInput)`
   }
 `
 
-function InputAmountInvestment() {
+const InputAmountInvestment = forwardRef(function InputAmountInvestment(props, ref) {
   const theme = useTheme()
 
   const currentSizeScreen = useContext(CurrentSizeScreenContext)
@@ -135,6 +135,7 @@ function InputAmountInvestment() {
 
         <BoxInputNumberAndUnit id='boxInputNumberAndUnit'>
           <InputNumber
+            ref={ref}
             value={amountInvestment}
             onChange={handleOnChangeInputNumber}
             id='inputNumberAmountInvestment'
@@ -147,6 +148,5 @@ function InputAmountInvestment() {
       </BoxInputs>
     </BoxSectionForm>
   )
-}
-
+})
 export default InputAmountInvestment
