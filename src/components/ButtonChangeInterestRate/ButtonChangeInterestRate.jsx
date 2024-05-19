@@ -38,7 +38,6 @@ const BoxLabelAndRadio = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  ${'' /* transition: background 0.3s ease-in-out; */}
   &:has(input:checked) {
     background-color: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.checked};
   }
