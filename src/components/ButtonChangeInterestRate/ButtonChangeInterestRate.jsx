@@ -5,16 +5,25 @@ import StyledRadio from '../styled/StyledRadio'
 
 const Fieldset = styled.fieldset`
   position: absolute;
-  top: -8px;
-  display: none;
+  display: flex;
   justify-content: space-between;
   width: 116px;
   margin: 0;
   padding: 0 5px;
   border: none;
 
+  @media (min-width: 320px) {
+    width: 170px;
+    top: -10px;
+  }
+
+  @media (min-width: 640px) {
+    width: 150px;
+  }
+
   @media (min-width: 960px) {
-    display: flex;
+    width: 130px;
+    top: -8px;
   }
 `
 
@@ -23,8 +32,6 @@ const Label = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 25px;
-  height: 15px;
   background: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.primary};
   color: ${(props) => props.theme.palette.input.span};
   font-size: 1.1rem;
@@ -40,6 +47,16 @@ const Label = styled.label`
   &:has(input:checked) {
     background-color: ${(props) => props.theme.palette.buttonChangeInterestRate.label.bg.checked};
     color: ${(props) => props.theme.palette.input.value};
+  }
+
+  @media (min-width: 320px) {
+    width: 35px;
+    height: 20px;
+  }
+
+  @media (min-width: 960px) {
+    width: 30px;
+    height: 15px;
   }
 `
 
