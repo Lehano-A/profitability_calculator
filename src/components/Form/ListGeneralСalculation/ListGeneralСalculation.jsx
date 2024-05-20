@@ -149,7 +149,7 @@ function ListGeneralСalculation() {
 
         <Item>
           <span>Процент прибыли</span>
-          <output htmlFor='inputNumberAmountInvestment inputRangeInvestmentPeriod interestRate'>
+          <output htmlFor='fieldsetChangeInterestRate inputRangeInvestmentPeriod'>
             {addLocale(currentAnnualInterestRate)} %
           </output>
         </Item>
@@ -158,7 +158,7 @@ function ListGeneralСalculation() {
           <span>
             Прибыль с <br /> инвестиции
           </span>
-          <Output htmlFor='inputRangeInvestmentPeriod interestRate'>
+          <Output htmlFor='inputNumberAmountInvestment fieldsetChangeInterestRate inputRangeInvestmentPeriod'>
             {addLocale(investmentProfit)} {currentMonetaryUnit}
           </Output>
         </Item>
